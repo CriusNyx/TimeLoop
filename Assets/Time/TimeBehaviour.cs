@@ -36,6 +36,8 @@ public abstract class TimeBehaviour : MonoBehaviour
         {
             actions.Remove(action);
         }
+
+        ProtectedFixedUpdate();
     }
 
     protected abstract void ProtectedFixedUpdate();
