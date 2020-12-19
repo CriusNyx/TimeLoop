@@ -8,6 +8,7 @@ using UnityEngine;
 public class Player : TimeBehaviour
 {
     new Rigidbody rigidbody;
+    new SphereCollider collider;
 
     public new Camera camera;
     public float mouseSensitivity = 30f;
