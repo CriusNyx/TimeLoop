@@ -25,6 +25,8 @@ public class Player : TimeBehaviour
 
     InputBuffer buffer = new InputBuffer();
 
+    bool groundedLastFrame = false;
+
     private void Awake()
     {
         rigidbody = gameObject.GetComponent<Rigidbody>();
@@ -85,10 +87,12 @@ public class Player : TimeBehaviour
         if(IsGrounded(out var hit))
         {
             GroundUpdate(hit);
+            groundedLastFrame = true;
         }
         else
         {
             AirUpdate();
+            groundedLastFrame = false;
         }
     }
 
@@ -98,7 +102,14 @@ public class Player : TimeBehaviour
             hit = default;
             return false;
         }
-        return Physics.BoxCast(transform.position, Vector3.one * 0.5f, Vector3.down, out hit, Quaternion.identity, groundDetectionDistance, LayerMask.GetMask("Default"));
+
+        float distance = groundDetectionDistance;
+        if (!groundedLastFrame)
+        {
+            distance = hoverDistance - 0.5f;
+        }
+
+        return Physics.BoxCast(transform.position, Vector3.one * 0.5f, Vector3.down, out hit, Quaternion.identity, distance, LayerMask.GetMask("Default"));
     }
 
     private void GroundUpdate(RaycastHit hit)
