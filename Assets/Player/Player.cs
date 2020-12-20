@@ -111,6 +111,6 @@ public class Player : TimeBehaviour
     {
         Quaternion cameraOrientation = Quaternion.Euler(-mousePosition.y, mousePosition.x, 0f);
         camera.transform.rotation = cameraOrientation;
-        camera.transform.position = transform.position + cameraOrientation * new Vector3(0f, 1f, -2f);
+        camera.transform.position = transform.position + cameraOrientation * new Vector3(0f, 1f, -5f);
     }
 }
