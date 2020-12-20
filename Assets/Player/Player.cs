@@ -24,8 +24,11 @@ public class Player : TimeBehaviour
     public const float airAcceleration = 20f;
     public const float maxVelocity = 15f;
     public const float gravityAcceleration = 20f;
+    public const float airDashSpeed = 100f;
 
     public const float jumpSpeed = 20f;
+
+    public const int maxAirDashes = 2;
 
     PlayerState state;
     public PlayerBehaviour behaviour = new WalkingBehaviour();
@@ -57,6 +60,10 @@ public class Player : TimeBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             state.buffer.grappelHook = true;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            state.buffer.airDashPressed = true;
         }
     }
 

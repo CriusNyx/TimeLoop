@@ -33,23 +33,6 @@ public class WalkingBehaviour : PlayerBehaviour
         }
     }
 
-    private bool IsGrounded(PlayerState state, out RaycastHit hit)
-    {
-        if (state.velocity.y > 0f)
-        {
-            hit = default;
-            return false;
-        }
-
-        float distance = Player.groundDetectionDistance;
-        if (!state.groundedLastFrame)
-        {
-            distance = Player.hoverDistance - 0.5f + 0.1f;
-        }
-
-        return Physics.BoxCast(state.player.transform.position + Vector3.one * 0.1f, Vector3.one * 0.5f, Vector3.down, out hit, Quaternion.identity, distance, LayerMask.GetMask("Default"));
-    }
-
     private void GroundUpdate(PlayerState state, RaycastHit hit)
     {
         SnapToGround(state, hit);
@@ -63,13 +46,9 @@ public class WalkingBehaviour : PlayerBehaviour
         }
 
         state.hasGrappelJump = true;
-    }
+        state.airDash = true;
 
-    private void SnapToGround(PlayerState state, RaycastHit hit)
-    {
-        Vector3 pos = state.player.transform.position;
-        pos.y = hit.point.y + Player.hoverDistance;
-        state.player.transform.position = pos;
+        CheckAirDash(state);
     }
 
     private void UpdateVelocty(PlayerState state, float acceleration, bool flatten, bool applyGravity)
@@ -122,5 +101,44 @@ public class WalkingBehaviour : PlayerBehaviour
     private void AirUpdate(PlayerState state)
     {
         UpdateVelocty(state, Player.airAcceleration, false, true);
+        CheckAirDash(state);
+    }
+
+    private static void CheckAirDash(PlayerState state)
+    {
+        if (state.buffer.airDashPressed && state.airDash && Time.time > state.airDashCooldown)
+        {
+            state.airDashCooldown = Time.time + 1f;
+            state.airDash = false;
+
+            Vector3 playerInput = Vector3.zero;
+            if (Input.GetKey(KeyCode.A))
+            {
+                playerInput.x -= 1;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                playerInput.x += 1;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                playerInput.z -= 1;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                playerInput.z += 1;
+            }
+
+            if (playerInput.magnitude > 1f)
+            {
+                playerInput = Vector3.Normalize(playerInput);
+            }
+            if (playerInput.magnitude != 0)
+            {
+                Quaternion rotation = Quaternion.Euler(0f, state.player.mousePosition.x, 0f);
+                Vector3 direction = rotation * playerInput;
+                state.player.behaviour = new AirDashBehaviour(direction);
+            }
+        }
     }
 }
