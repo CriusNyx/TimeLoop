@@ -93,7 +93,8 @@ public class WalkingBehaviour : PlayerBehaviour
             }
             if (playerInput.magnitude == 0)
             {
-                state.player.behaviour = new JumpCharge();
+                if (state.groundedLastFrame)
+                    state.player.behaviour = new JumpCharge();
             }
             else
             {

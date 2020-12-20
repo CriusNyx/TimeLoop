@@ -39,7 +39,7 @@ public class JumpCharge : PlayerBehaviour
             Quaternion rotation = Quaternion.Euler(0f, state.player.mousePosition.x, 0f);
             Vector3 direction = rotation * playerInput;
 
-            if(playerInput.magnitude == 0f)
+            if (playerInput.magnitude == 0f)
             {
                 state.velocity = Vector3.up * v;
             }
@@ -49,10 +49,13 @@ public class JumpCharge : PlayerBehaviour
                 Vector3 up = Vector3.up * Mathf.Sin(Mathf.PI / 4f) * v;
                 state.velocity = side + up;
             }
+            Debug.Log(state.velocity);
 
             state.player.behaviour = new WalkingBehaviour();
         }
-
-        UpdateVelocty(state, Player.groundAcceleration, true, false, false);
+        else
+        {
+            UpdateVelocty(state, Player.groundAcceleration, true, false, false);
+        }
     }
 }
