@@ -7,7 +7,7 @@ public class LockedDoor : MonoBehaviour
     public int code;
     public bool locked = true;
     float openTimer = 0;
-    public float openDuration = 0.5f; // in seconds
+    public float openDuration = 0.1f;
     Vector3 initialPosition;
     Vector3 openPosition;
 

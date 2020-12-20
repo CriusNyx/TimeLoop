@@ -29,7 +29,7 @@ public class KeyItem : Item
     
     public override bool Use()
     {
-        Collider[] colliders = Physics.OverlapSphere(GameObject.Find("Player").transform.position, 5f);
+        Collider[] colliders = Physics.OverlapSphere(GameObject.Find("Player").transform.position, 2f);
         foreach (var collider in colliders)
         {
             LockedDoor door = collider.gameObject.GetComponent<LockedDoor>();
