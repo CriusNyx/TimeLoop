@@ -1607,6 +1607,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 680537896995888112, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453599516165474494, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453599516165474494, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453599516165474494, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a1f78345048215d4e952d748e22192ce, type: 2}
+    - target: {fileID: 5182987238136973251, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182987238136973251, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182987238136973251, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a1f78345048215d4e952d748e22192ce, type: 2}
+    - target: {fileID: 7977562674142007416, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977562674142007416, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977562674142007416, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a1f78345048215d4e952d748e22192ce, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5cb6a4f0faae4b438eeb8cf621fa7f9, type: 3}
 --- !u!1001 &2731051330574879594
