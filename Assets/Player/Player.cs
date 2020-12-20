@@ -17,8 +17,8 @@ public class Player : TimeBehaviour
 
     public Vector2 mousePosition { get; private set; } = Vector2.zero;
 
-    public const float hoverDistance = 1.5f;
-    public const float groundDetectionDistance = 1.6f;
+    public const float hoverDistance = 1.0f;
+    public const float groundDetectionDistance = 1.1f;
 
     public const float groundAcceleration = 150f;
     public const float airAcceleration = 20f;
