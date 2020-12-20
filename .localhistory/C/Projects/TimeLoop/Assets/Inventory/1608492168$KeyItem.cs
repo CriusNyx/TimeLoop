@@ -27,7 +27,7 @@ public class KeyItem : Item
         throw new System.NotImplementedException();
     }
     
-    public override bool Use()
+    public override void Use()
     {
         Collider[] colliders = Physics.OverlapSphere(GameObject.Find("Player").transform.position, 2f);
         foreach (var collider in colliders)
@@ -36,10 +36,7 @@ public class KeyItem : Item
             if(door != null && door.locked && door.code == _code)
             {
                 door.Open();
-                return true;
             }
         }
-
-        return false;
     }
 }

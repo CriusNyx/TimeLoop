@@ -52,11 +52,7 @@ public class Inventory : TimeBehaviour
 
     public void UseSelectedItem()
     {
-        bool used = GetSelectedItem()?.Use() == true;
-        if (used && GetSelectedItem()?.IsConsumable == true)
-        {
-            items[currentIndex] = null;
-        }
+        GetSelectedItem()?.Use();
     }
 
     public void SelectNextItem()
