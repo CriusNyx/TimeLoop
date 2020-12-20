@@ -7,6 +7,7 @@ public class PlayerState
     public Rigidbody rigidbody;
     public Vector3 velocity = Vector3.zero;
     public bool groundedLastFrame = false;
+    public bool hasGrappelJump = true;
 
     public InputBuffer buffer = new InputBuffer();
 

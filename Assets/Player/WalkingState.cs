@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WalkingBehaviour : PlayerBehaviour
 {
@@ -14,6 +9,18 @@ public class WalkingBehaviour : PlayerBehaviour
 
     private void PhysicsUpdate(PlayerState state)
     {
+        if (state.buffer.grappelHook)
+        {
+            Camera camera = state.player.camera;
+            Vector3 position = camera.transform.position;
+            Vector3 forward = camera.transform.forward;
+
+            if(Physics.Raycast(position, forward, out RaycastHit grappelHit, Mathf.Infinity, LayerMask.GetMask("Default")))
+            {
+                state.player.behaviour = new GrappelHookBehaviour(grappelHit.point);
+            }
+        }
+
         if (IsGrounded(state, out var hit))
         {
             GroundUpdate(state, hit);
@@ -37,10 +44,10 @@ public class WalkingBehaviour : PlayerBehaviour
         float distance = Player.groundDetectionDistance;
         if (!state.groundedLastFrame)
         {
-            distance = Player.hoverDistance - 0.5f;
+            distance = Player.hoverDistance - 0.5f + 0.1f;
         }
 
-        return Physics.BoxCast(state.player.transform.position, Vector3.one * 0.5f, Vector3.down, out hit, Quaternion.identity, distance, LayerMask.GetMask("Default"));
+        return Physics.BoxCast(state.player.transform.position + Vector3.one * 0.1f, Vector3.one * 0.5f, Vector3.down, out hit, Quaternion.identity, distance, LayerMask.GetMask("Default"));
     }
 
     private void GroundUpdate(PlayerState state, RaycastHit hit)
@@ -51,9 +58,11 @@ public class WalkingBehaviour : PlayerBehaviour
         if (state.buffer.jump)
         {
             Vector3 v = state.velocity;
-            v.y = 10f;
+            v.y = Player.jumpSpeed;
             state.velocity = v;
         }
+
+        state.hasGrappelJump = true;
     }
 
     private void SnapToGround(PlayerState state, RaycastHit hit)
@@ -104,7 +113,7 @@ public class WalkingBehaviour : PlayerBehaviour
         }
         if (applyGravity)
         {
-            flatVelocity.y += -20f * Time.fixedDeltaTime;
+            flatVelocity.y += -Player.gravityAcceleration * Time.fixedDeltaTime;
         }
 
         state.velocity = flatVelocity;
@@ -112,6 +121,6 @@ public class WalkingBehaviour : PlayerBehaviour
 
     private void AirUpdate(PlayerState state)
     {
-        UpdateVelocty(state, Player.groundAcceleration, false, true);
+        UpdateVelocty(state, Player.airAcceleration, false, true);
     }
 }
