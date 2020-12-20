@@ -21,6 +21,9 @@ public class TimeLoopSceneManager : MonoBehaviour
 
     private void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            SceneManager.LoadScene("TimeLoop");
+        }
     }
 }
