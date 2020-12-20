@@ -43,7 +43,7 @@ public class GrappleHookBehaviour : PlayerBehaviour
             state.groundedLastFrame = false;
         }
 
-        state.grappleHookCooldown = Time.time + Player.grappleHookCooldown;
+        state.canGrapple = false;
     }
 
     public void Break(PlayerState state, LineRenderer grappleLineRenderer, bool jump)

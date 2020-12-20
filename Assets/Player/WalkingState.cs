@@ -9,7 +9,7 @@ public class WalkingBehaviour : PlayerBehaviour
 
     private void PhysicsUpdate(PlayerState state)
     {
-        if (state.buffer.grappelHook && Time.time > state.grappleHookCooldown)
+        if (state.buffer.grappelHook && state.canGrapple)
         {
             Camera camera = state.player.camera;
             Vector3 position = camera.transform.position;
@@ -48,6 +48,7 @@ public class WalkingBehaviour : PlayerBehaviour
         state.hasGrappelJump = true;
         state.airDash = true;
         state.canDoubleJump = true;
+        state.canGrapple = true;
 
         CheckAirDash(state);
     }
