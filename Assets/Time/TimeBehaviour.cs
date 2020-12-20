@@ -7,6 +7,10 @@ public abstract class TimeBehaviour : MonoBehaviour
 {
     private List<(float time, Func<IEnumerator> func)> actions = new List<(float time, Func<IEnumerator> func)>();
 
+    protected void RegisterActionReletive(float time, Func<IEnumerator> func) => RegisterAction(Time.timeSinceLevelLoad + time, func);
+    protected void RegisterActionReletive(float minutes, float seconds, Func<IEnumerator> func) => RegisterAction(minutes, Time.timeSinceLevelLoad + seconds, func);
+    protected void RegisterActionReletive(TimeStamp time, Func<IEnumerator> func) => RegisterAction(new TimeStamp(time.minutes, Time.timeSinceLevelLoad + time.seconds), func);
+
     protected void RegisterAction(float time, Func<IEnumerator> func)
     {
         this.actions.Add((time, func));
