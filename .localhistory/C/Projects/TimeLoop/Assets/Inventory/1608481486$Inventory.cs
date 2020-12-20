@@ -58,7 +58,7 @@ public class Inventory : TimeBehaviour
     public void SelectNextItem()
     {
         currentIndex++;
-        if (currentIndex > MAX_ITEMS - 1)
+        if (currentIndex >= MAX_ITEMS)
         {
             currentIndex = 0;
         }

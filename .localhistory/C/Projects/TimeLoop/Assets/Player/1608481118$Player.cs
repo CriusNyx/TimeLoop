@@ -50,7 +50,6 @@ public class Player : TimeBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         rigidbody.freezeRotation = true;
-        GetComponent<Inventory>().AddItem(new GrappleItem());
     }
 
     private void Update()
