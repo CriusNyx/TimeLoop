@@ -14,7 +14,7 @@ public class KeyItem : Item
     {
         _code = code;
         _color = color;
-        _sprite = Resources.Load<Sprite>("sprit");
+        _sprite = Resources.Load<Sprite>("sprit.png");
     }
 
     public Sprite GetSprite()

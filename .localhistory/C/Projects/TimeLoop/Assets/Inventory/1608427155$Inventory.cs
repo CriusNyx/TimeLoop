@@ -8,13 +8,13 @@ public class Inventory : TimeBehaviour
 {
     public static int MAX_ITEMS = 10;
 
-    Item[] items = new Item[MAX_ITEMS];
+    Item[] items = new Item[10];
 
     int currentIndex = 0;
 
     public void AddItem(Item item)
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.length; i++)
         {
             if (items[i] == null)
             {
@@ -22,11 +22,6 @@ public class Inventory : TimeBehaviour
                 break;
             }
         }
-    }
-
-    public Item[] GetItems()
-    {
-        return items;
     }
 
     public Item GetItem(int index)

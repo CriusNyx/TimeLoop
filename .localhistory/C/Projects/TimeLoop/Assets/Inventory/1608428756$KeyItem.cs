@@ -14,7 +14,7 @@ public class KeyItem : Item
     {
         _code = code;
         _color = color;
-        _sprite = Resources.Load<Sprite>("sprit");
+        _sprite = Sprite.Create(Resources.Load<Texture2D>("sprit.png"), new Rect(0, 0, 200, 200), Vector2.zero);
     }
 
     public Sprite GetSprite()

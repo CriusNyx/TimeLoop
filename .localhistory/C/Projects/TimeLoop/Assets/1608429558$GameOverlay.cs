@@ -7,7 +7,7 @@ public class GameOverlay : TimeBehaviour
 {
     bool isPaused = false;
     Inventory playerInventory;
-    GameObject[] slots = new GameObject[Inventory.MAX_ITEMS];
+    GameObject[] slots;
     
 
     // Start is called before the first frame update
@@ -52,7 +52,9 @@ public class GameOverlay : TimeBehaviour
             // Set images
             if (items[i] != null)
             {
-                slots[i].GetComponent<Image>().sprite = items[i].GetSprite();
+                Debug.Log(slots[i].name);
+                    
+                    //.sprite = items[i].GetSprite();
             }
         }
     }

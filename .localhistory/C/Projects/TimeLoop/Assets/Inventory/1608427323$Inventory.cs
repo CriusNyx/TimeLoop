@@ -8,7 +8,7 @@ public class Inventory : TimeBehaviour
 {
     public static int MAX_ITEMS = 10;
 
-    Item[] items = new Item[MAX_ITEMS];
+    Item[] items = new Item[10];
 
     int currentIndex = 0;
 
@@ -22,11 +22,6 @@ public class Inventory : TimeBehaviour
                 break;
             }
         }
-    }
-
-    public Item[] GetItems()
-    {
-        return items;
     }
 
     public Item GetItem(int index)

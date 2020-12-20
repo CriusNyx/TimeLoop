@@ -6,7 +6,6 @@ public class KeyItem : Item
     private string _name = "key";
     private int _code;
     private Color _color;
-    private Sprite _sprite;
 
     public string Name { get => "name"; set => _name = value; }
 
@@ -14,13 +13,12 @@ public class KeyItem : Item
     {
         _code = code;
         _color = color;
-        _sprite = Resources.Load<Sprite>("sprit");
     }
 
     public Sprite GetSprite()
     {
         // TODO: Add color to sprite
-        return _sprite;
+        return Sprite.Create(Resources.Load<Texture2D>("sprit"), new Rect(0, 0, 100, 100), Vector2.zero);
     }
 
     public void OnPickup()
