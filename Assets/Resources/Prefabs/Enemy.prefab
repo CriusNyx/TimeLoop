@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2731051330982535667}
   - component: {fileID: 2731051330982535666}
-  - component: {fileID: 2731051330982535677}
   - component: {fileID: 2731051330982535676}
   m_Layer: 0
   m_Name: Enemy
@@ -57,18 +56,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2731051330982535677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2731051330982535679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c81760c18843a4eb8f806c4346e34f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2731051330982535676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +128,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bde7aa9afadc2d04288db3b09b3c05a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -236,7 +223,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bde7aa9afadc2d04288db3b09b3c05a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
