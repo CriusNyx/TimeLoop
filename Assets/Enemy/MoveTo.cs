@@ -5,11 +5,30 @@ using UnityEngine.AI;
 
 public class MoveTo : MonoBehaviour
 {
+    public PathNode nextDestination;
+    public int startDelay;
 
 
     void Start()
     {
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        agent.destination = new Vector3(0, 0, -35);
+        StartCoroutine(Delay(agent));
     }
+    IEnumerator Patrol(NavMeshAgent agent)
+    {
+        if (nextDestination.next != null)
+        {
+            agent.destination = nextDestination.transform.position;
+            nextDestination = nextDestination.next;
+            yield return new WaitForSeconds(10);
+            StartCoroutine(Patrol(agent));
+        }
+
+    }
+    IEnumerator Delay(NavMeshAgent agent)
+    {
+        yield return new WaitForSeconds(startDelay);
+        StartCoroutine(Patrol(agent));
+    }
+
 }
