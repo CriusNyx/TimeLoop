@@ -2,13 +2,14 @@
 using System.Collections;
 
 /**
- * Apply this bad boy to a gameobject and set the 'item' field to create the pickup for that item.
+ * Apply this bad boy to a gameobject and set the 'item' field for fun
  */ 
 public class Pickup : MonoBehaviour
 {
-    public Item item;
 
     protected BoxCollider pickupCollider;
+
+    public Item item;
 
     private void Awake()
     {
