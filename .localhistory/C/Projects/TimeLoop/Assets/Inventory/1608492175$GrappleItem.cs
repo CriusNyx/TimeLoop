@@ -17,10 +17,9 @@ public class GrappleItem : Item
     }
 
     // Do something if door is nearby? Check for door somehow?
-    public override bool Use()
+    public override void Use()
     {
         GameObject.Find("Player").GetComponent<Player>().state.buffer.grappelHook = true;
-        return true;
     }
 
     public override void OnPickup()

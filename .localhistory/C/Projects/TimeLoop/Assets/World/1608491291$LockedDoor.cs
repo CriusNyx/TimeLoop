@@ -5,7 +5,6 @@ using UnityEngine;
 public class LockedDoor : MonoBehaviour
 {
     public int code;
-    public bool locked = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +30,6 @@ public class LockedDoor : MonoBehaviour
     }
     public void Open()
     {
-        locked = false;
         Debug.Log("I HAVE BEEN UNLOCKED AH");
         // move up lol
     }
