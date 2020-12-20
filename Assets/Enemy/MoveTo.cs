@@ -16,7 +16,7 @@ public class MoveTo : MonoBehaviour
     }
     IEnumerator Patrol(NavMeshAgent agent)
     {
-        if (nextDestination.next != null)
+        if (nextDestination?.next != null)
         {
             agent.destination = nextDestination.transform.position;
             nextDestination = nextDestination.next;

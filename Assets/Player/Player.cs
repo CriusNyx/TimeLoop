@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SphereCollider))]
 public class Player : TimeBehaviour
@@ -31,6 +30,7 @@ public class Player : TimeBehaviour
     public const float grappleHookCooldown = 2f;
 
     public const float jumpSpeed = 20f;
+    public const float highJumpSpeed = 40f;
 
     public const int maxAirDashes = 2;
 
@@ -89,11 +89,11 @@ public class Player : TimeBehaviour
             flatVelocity.y = 0f;
             flatVelocity = Vector3.Normalize(flatVelocity);
             float theta = -Mathf.Atan2(flatVelocity.z, flatVelocity.x) * Mathf.Rad2Deg + 90f;
-            Quaternion rot = Quaternion.Euler(-90f, theta, 0f);
-            gameObject.transform.Find("Player Model").transform.rotation = rot;
+            Quaternion rot = Quaternion.Euler(0f, theta, 0f);
+            gameObject.transform.Find("Char Base Unity 1").transform.rotation = rot;
         }
 
-        state.buffer = new InputBuffer();
+        state.buffer = new InputBuffer(state.buffer);
     }
 
     private void UpdateCamera()
