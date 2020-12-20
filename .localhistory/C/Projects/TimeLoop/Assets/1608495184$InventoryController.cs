@@ -13,7 +13,7 @@ public class InventoryController : TimeBehaviour
     {
         statusPanel = transform.Find("StatusPanel").gameObject;
         float inventoryWidth = statusPanel.GetComponent<RectTransform>().rect.width - 200;
-        float yPosition = -(statusPanel.GetComponent<RectTransform>().rect.height / 2) + 100;
+        float yPosition = -(statusPanel.GetComponent<RectTransform>().rect.height / 2) + 200;
 
         // Draw inventory slots
         for (var i = 0; i < Inventory.MAX_ITEMS; i++)

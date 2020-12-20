@@ -42,6 +42,7 @@ public class Pickup : MonoBehaviour
         if (inventory != null)
         {
             inventory.AddItem(item);
+            Debug.Log("Picked up item!~");
             Destroy(gameObject);
         }
     }

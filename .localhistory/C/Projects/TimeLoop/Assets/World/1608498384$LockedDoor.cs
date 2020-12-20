@@ -29,6 +29,9 @@ public class LockedDoor : MonoBehaviour
     }
     public void Open()
     {
-        locked = false;
+        if(locked)
+        {
+            locked = false;
+        }
     }
 }
