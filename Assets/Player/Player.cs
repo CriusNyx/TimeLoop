@@ -15,20 +15,27 @@ public class Player : TimeBehaviour
 
     private Vector2 mouseDelta;
 
-    private Vector2 mousePosition = Vector2.zero;
+    public Vector2 mousePosition { get; private set; } = Vector2.zero;
 
-    private float hoverDistance = 1.5f;
-    private float groundDetectionDistance = 1.6f;
+    public const float hoverDistance = 1.5f;
+    public const float groundDetectionDistance = 1.6f;
 
     public const float groundAcceleration = 150f;
+    public const float airAcceleration = 20f;
     public const float maxVelocity = 15f;
+    public const float gravityAcceleration = 20f;
 
-    InputBuffer buffer = new InputBuffer();
+    public const float jumpSpeed = 20f;
+
+    PlayerState state;
+    public PlayerBehaviour behaviour = new WalkingBehaviour();
 
     private void Awake()
     {
         rigidbody = gameObject.GetComponent<Rigidbody>();
         collider = gameObject.GetComponent<SphereCollider>();
+
+        this.state = new PlayerState(this, rigidbody);
     }
 
     private void Start()
@@ -45,23 +52,35 @@ public class Player : TimeBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            buffer.jump = true;
+            state.buffer.jump = true;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            state.buffer.grappelHook = true;
         }
     }
 
     protected override void ProtectedFixedUpdate()
     {
-        PhysicsUpdate();
+        state.velocity = rigidbody.velocity;
+
+        behaviour.Update(state);
         UpdateCamera();
 
-        buffer = new InputBuffer();
+        rigidbody.velocity = state.velocity;
+
+        state.buffer = new InputBuffer();
     }
 
     private void UpdateCamera()
     {
-        mousePosition += mouseDelta;
+        Vector2 mousePos = mousePosition;
 
-        mousePosition.y = Mathf.Clamp(mousePosition.y, -90f, 90f);
+        mousePos += mouseDelta;
+
+        mousePos.y = Mathf.Clamp(mousePos.y, -90f, 90f);
+
+        mousePosition = mousePos;
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -80,107 +99,10 @@ public class Player : TimeBehaviour
         mouseDelta = Vector2.zero;
     }
 
-    private void PhysicsUpdate()
-    {
-        if(IsGrounded(out var hit))
-        {
-            GroundUpdate(hit);
-        }
-        else
-        {
-            AirUpdate();
-        }
-    }
-
-    private bool IsGrounded(out RaycastHit hit)
-    {
-        if (rigidbody.velocity.y > 0f) {
-            hit = default;
-            return false;
-        }
-        return Physics.BoxCast(transform.position, Vector3.one * 0.5f, Vector3.down, out hit, Quaternion.identity, groundDetectionDistance, LayerMask.GetMask("Default"));
-    }
-
-    private void GroundUpdate(RaycastHit hit)
-    {
-        SnapToGround(hit);
-        UpdateVelocty(groundAcceleration, true, false);
-        if (buffer.jump)
-        {
-            Vector3 v = rigidbody.velocity;
-            v.y = 10f;
-            rigidbody.velocity = v;
-        }
-    }
-
-    private void SnapToGround(RaycastHit hit)
-    {
-        Vector3 pos = transform.position;
-        pos.y = hit.point.y + hoverDistance;
-        transform.position = pos;
-    }
-
-    private void UpdateVelocty(float acceleration, bool flatten, bool applyGravity)
-    {
-        Vector3 velocty = rigidbody.velocity;
-        Vector3 flatVelocity = velocty;
-        flatVelocity.y = 0f;
-
-        Vector3 input = Vector3.zero;
-        if (Input.GetKey(KeyCode.A))
-        {
-            input.x -= 1f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            input.x += 1f;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            input.z -= 1f;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            input.z += 1f;
-        }
-
-        if(input.magnitude > 1f)
-        {
-            input = input.normalized;
-        }
-
-        Quaternion inputOrientation = Quaternion.Euler(0f, mousePosition.x, 0f);
-
-        Vector3 targetVelocty = inputOrientation * input * maxVelocity;
-
-        flatVelocity = Vector3.MoveTowards(flatVelocity, targetVelocty, acceleration * Time.fixedDeltaTime);
-
-        if (!flatten)
-        {
-            flatVelocity.y = velocty.y;
-        }
-        if (applyGravity)
-        {
-            flatVelocity.y += -20f * Time.fixedDeltaTime;
-        }
-
-        rigidbody.velocity = flatVelocity;
-    }
-
     private void LateUpdate()
     {
         Quaternion cameraOrientation = Quaternion.Euler(-mousePosition.y, mousePosition.x, 0f);
         camera.transform.rotation = cameraOrientation;
         camera.transform.position = transform.position + cameraOrientation * new Vector3(0f, 1f, -2f);
-    }
-
-    private void AirUpdate()
-    {
-        UpdateVelocty(groundAcceleration, false, true);
-    }
-
-    private class InputBuffer
-    {
-        public bool jump = false;
     }
 }
