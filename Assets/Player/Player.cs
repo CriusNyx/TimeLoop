@@ -25,6 +25,10 @@ public class Player : TimeBehaviour
     public const float maxVelocity = 15f;
     public const float gravityAcceleration = 20f;
     public const float airDashSpeed = 100f;
+    public const float grappleHookDistance = 70f;
+
+    public const float grappleHookTimeout = 2f;
+    public const float grappleHookCooldown = 2f;
 
     public const float jumpSpeed = 20f;
 

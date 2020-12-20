@@ -11,6 +11,7 @@ public class PlayerState
 
     public bool airDash = true;
     public float airDashCooldown = -1f;
+    public float grappleHookCooldown = -1f;
 
     public InputBuffer buffer = new InputBuffer();
 

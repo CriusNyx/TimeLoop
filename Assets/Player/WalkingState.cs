@@ -9,15 +9,15 @@ public class WalkingBehaviour : PlayerBehaviour
 
     private void PhysicsUpdate(PlayerState state)
     {
-        if (state.buffer.grappelHook)
+        if (state.buffer.grappelHook && Time.time > state.grappleHookCooldown)
         {
             Camera camera = state.player.camera;
             Vector3 position = camera.transform.position;
             Vector3 forward = camera.transform.forward;
 
-            if(Physics.Raycast(position, forward, out RaycastHit grappelHit, Mathf.Infinity, LayerMask.GetMask("Default")))
+            if(Physics.Raycast(position, forward, out RaycastHit grappelHit, Player.grappleHookDistance, LayerMask.GetMask("Default")))
             {
-                state.player.behaviour = new GrappelHookBehaviour(grappelHit.point);
+                state.player.behaviour = new GrappleHookBehaviour(grappelHit.point);
             }
         }
 
