@@ -34,7 +34,7 @@ public class Player : TimeBehaviour
 
     public const int maxAirDashes = 2;
 
-    public PlayerState state;
+    PlayerState state;
     public PlayerBehaviour behaviour = new WalkingBehaviour();
 
     private void Awake()
@@ -50,7 +50,6 @@ public class Player : TimeBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         rigidbody.freezeRotation = true;
-        GetComponent<Inventory>().AddItem(new GrappleItem());
     }
 
     private void Update()
@@ -63,10 +62,10 @@ public class Player : TimeBehaviour
         {
             state.buffer.jump = true;
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            GetComponent<Inventory>().UseSelectedItem();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    state.buffer.grappelHook = true;
+        //}
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             state.buffer.airDashPressed = true;
@@ -105,6 +104,7 @@ public class Player : TimeBehaviour
         mousePos.y = Mathf.Clamp(mousePos.y, -90f, 90f);
 
         mousePosition = mousePos;
+        
 
         mouseDelta = Vector2.zero;
     }

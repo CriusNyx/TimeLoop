@@ -55,23 +55,6 @@ public class Inventory : TimeBehaviour
         GetSelectedItem()?.Use();
     }
 
-    public void SelectNextItem()
-    {
-        currentIndex++;
-        if (currentIndex > MAX_ITEMS - 1)
-        {
-            currentIndex = 0;
-        }
-    }
-
-    public void SelectPreviousItem()
-    {
-        currentIndex--;
-        if(currentIndex < 0)
-        {
-            currentIndex = MAX_ITEMS - 1;
-        }
-    }
 
 
 

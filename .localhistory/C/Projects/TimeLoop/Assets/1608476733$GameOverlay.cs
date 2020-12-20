@@ -6,14 +6,26 @@ using UnityEngine.UI;
 public class GameOverlay : TimeBehaviour
 {
     bool isPaused = false;
+    Inventory playerInventory;
+    GameObject[] slots = new GameObject[Inventory.MAX_ITEMS];
     
 
     // Start is called before the first frame update
     void Start()
     {
+        playerInventory = GameObject.Find("Player").GetComponent<Inventory>();
 
         RegisterAction(0f, 1f, RoutineToDo);
         transform.Find("PausePanel").gameObject.SetActive(false);
+
+        for (var i = 0; i < Inventory.MAX_ITEMS; i++)
+        {
+            GameObject icon = new GameObject();
+            icon.AddComponent<Image>();
+            icon.transform.SetParent(transform.Find("StatusPanel").transform);
+            icon.transform.Translate(new Vector3(200 + (i * 200), 200, 0));
+            slots[i] = icon;
+        }
     }
 
     // Update is called once per frame
@@ -30,7 +42,20 @@ public class GameOverlay : TimeBehaviour
                 SetPause(false);
             }
         }
+        DrawInventory();
+    }
 
+    void DrawInventory()
+    {
+        Item[] items = playerInventory.GetItems();
+        for(var i = 0; i < items.Length; i++)
+        {
+            // Set images
+            if (items[i] != null)
+            {
+                slots[i].GetComponent<Image>().sprite = items[i].GetSprite();
+            }
+        }
     }
 
     void SetPause(bool status)
@@ -39,7 +64,6 @@ public class GameOverlay : TimeBehaviour
         Time.timeScale = isPaused ? 0f : 1f;
         transform.Find("PausePanel").gameObject.SetActive(isPaused);
         Cursor.visible = !isPaused;
-        Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     private IEnumerator RoutineToDo()

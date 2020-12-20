@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KeyItem : Item
+public class KeyItem : Pickup, Item
 {
     private string _name = "key";
     private int _code;
@@ -14,7 +14,7 @@ public class KeyItem : Item
     {
         _code = code;
         _color = color;
-        _sprite = Resources.Load<Sprite>("key");
+        _sprite = Resources.Load<Sprite>("sprit");
     }
 
     public Sprite GetSprite()
@@ -32,6 +32,6 @@ public class KeyItem : Item
     public void Use()
     {
         Debug.Log("use");
-        GameObject.Find("Player").GetComponent<Rigidbody>().AddForce(new Vector3(0, 1000, 0));
+        GameObject.Find("Sphere").GetComponent<Rigidbody>().AddForce(new Vector3(0, 1000, 0));
     }
 }

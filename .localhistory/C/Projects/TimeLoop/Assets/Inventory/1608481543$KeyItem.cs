@@ -32,6 +32,6 @@ public class KeyItem : Item
     public void Use()
     {
         Debug.Log("use");
-        GameObject.Find("Player").GetComponent<Rigidbody>().AddForce(new Vector3(0, 1000, 0));
+        GameObject.Find("Sphere").GetComponent<Rigidbody>().AddForce(new Vector3(0, 1000, 0));
     }
 }
