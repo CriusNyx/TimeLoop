@@ -55,6 +55,9 @@ public class Player : TimeBehaviour
 
     private void Update()
     {
+        gameObject.transform.Find("Char Base Unity 1/Gun").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasGrappleUnlocked;
+        gameObject.transform.Find("Char Base Unity 1/Booster").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasSuperJump;
+
         float mouseX = Input.GetAxisRaw("Mouse X");
         float mouseY = Input.GetAxisRaw("Mouse Y");
         mouseDelta += new Vector2(mouseX, mouseY) * mouseSensitivity * Time.deltaTime;
@@ -70,6 +73,14 @@ public class Player : TimeBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             state.buffer.airDashPressed = true;
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            state.buffer.superJumpPressed = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            state.buffer.superJumpReleased = true;
         }
     }
 
