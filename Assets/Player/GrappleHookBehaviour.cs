@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrappelHookBehaviour : PlayerBehaviour
+public class GrappleHookBehaviour : PlayerBehaviour
 {
     public Vector3 target;
+    private float timeToStop;
 
-    public GrappelHookBehaviour(Vector3 target)
+    public GrappleHookBehaviour(Vector3 target)
     {
         this.target = target;
+        timeToStop = Time.time + Player.grappleHookTimeout;
     }
 
     public override void Update(PlayerState state)
@@ -18,21 +20,17 @@ public class GrappelHookBehaviour : PlayerBehaviour
         grappleLineRenderer.widthMultiplier = 0.1f;
         grappleLineRenderer.enabled = true;
 
-        if (state.buffer.jump)
+        if (Time.time > timeToStop)
         {
-            grappleLineRenderer.enabled = false;
-
-            if (state.hasGrappelJump)
-            {
-                state.velocity.y = Player.jumpSpeed;
-                state.hasGrappelJump = false;
-            }
-            state.player.behaviour = new WalkingBehaviour();
+            Break(state, grappleLineRenderer, false);
+        }
+        if (state.buffer.jump && state.hasGrappelJump)
+        {
+            Break(state, grappleLineRenderer, state.hasGrappelJump);
         }
         else if (state.buffer.grappelHook)
         {
-            grappleLineRenderer.enabled = false;
-            state.player.behaviour = new WalkingBehaviour();
+            Break(state, grappleLineRenderer, false);
         }
         else
         {
@@ -44,5 +42,19 @@ public class GrappelHookBehaviour : PlayerBehaviour
 
             state.groundedLastFrame = false;
         }
+
+        state.grappleHookCooldown = Time.time + Player.grappleHookCooldown;
+    }
+
+    public void Break(PlayerState state, LineRenderer grappleLineRenderer, bool jump)
+    {
+        if (jump)
+        {
+            state.hasGrappelJump = false;
+            state.velocity.y = Player.jumpSpeed;
+        }
+
+        grappleLineRenderer.enabled = false;
+        state.player.behaviour = new WalkingBehaviour();
     }
 }
