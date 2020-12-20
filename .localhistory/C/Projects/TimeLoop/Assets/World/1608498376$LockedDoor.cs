@@ -29,6 +29,11 @@ public class LockedDoor : MonoBehaviour
     }
     public void Open()
     {
-        locked = false;
+        if(locked)
+        {
+            locked = false;
+            Debug.Log("I HAVE BEEN UNLOCKED AH");
+            // move up lol
+        }
     }
 }
