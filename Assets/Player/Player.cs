@@ -45,6 +45,7 @@ public class Player : TimeBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        rigidbody.freezeRotation = true;
     }
 
     private void Update()
