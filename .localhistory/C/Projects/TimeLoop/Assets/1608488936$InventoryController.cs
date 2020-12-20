@@ -13,7 +13,7 @@ public class InventoryController : TimeBehaviour
     {
         statusPanel = transform.Find("StatusPanel").gameObject;
         float inventoryWidth = statusPanel.GetComponent<RectTransform>().rect.width - 200;
-        float yPosition = -(statusPanel.GetComponent<RectTransform>().rect.height / 2) + 200;
+        float inventoryHeight = -(statusPanel.GetComponent<RectTransform>().rect.height / 2) + 200;
 
         // Draw inventory slots
         for (var i = 0; i < Inventory.MAX_ITEMS; i++)
@@ -24,7 +24,7 @@ public class InventoryController : TimeBehaviour
             icon.GetComponent<Outline>().effectColor = Color.red;
             icon.transform.SetParent(statusPanel.transform);
 
-            icon.transform.localPosition = new Vector3((inventoryWidth/Inventory.MAX_ITEMS * i) - (inventoryWidth / 2) + icon.GetComponent<RectTransform>().rect.width, yPosition, 0);
+            icon.transform.localPosition = new Vector3((inventoryWidth/Inventory.MAX_ITEMS * i) - (inventoryWidth / 2) + icon.GetComponent<RectTransform>().rect.width, inventoryHeight, 0);
             slots[i] = icon;
         }
     }

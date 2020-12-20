@@ -31,6 +31,7 @@ public class KeyItem : Item
     // Do something if door is nearby? Check for door somehow?
     public void Use()
     {
+        Debug.Log("use");
         GameObject.Find("Player").GetComponent<Rigidbody>().AddForce(new Vector3(0, 1000, 0));
     }
 }
