@@ -13,10 +13,9 @@ public class GameOverlay : TimeBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerInventory = GameObject.Find("Player").GetComponent<Inventory>();
-
         RegisterAction(0f, 1f, RoutineToDo);
         transform.Find("PausePanel").gameObject.SetActive(false);
+        playerInventory = GameObject.Find("Sphere").GetComponent<Inventory>();
 
         for (var i = 0; i < Inventory.MAX_ITEMS; i++)
         {

@@ -24,7 +24,6 @@ public class Inventory : TimeBehaviour
         }
     }
 
-    // TODO: make more restricted
     public Item[] GetItems()
     {
         return items;

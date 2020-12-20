@@ -4,9 +4,9 @@ using System.Collections;
 /**
  * Apply this bad boy to a gameobject and set the 'item' field to create the pickup for that item.
  */ 
-public class Pickup : MonoBehaviour
+public abstract class Pickup : MonoBehaviour
 {
-    public Item item;
+    protected abstract Item item;
 
     protected BoxCollider pickupCollider;
 

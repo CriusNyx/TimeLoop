@@ -24,7 +24,6 @@ public class Inventory : TimeBehaviour
         }
     }
 
-    // TODO: make more restricted
     public Item[] GetItems()
     {
         return items;
@@ -42,7 +41,7 @@ public class Inventory : TimeBehaviour
 
     public void SelectItem(int index)
     {
-        currentIndex = Mathf.Min(MAX_ITEMS, Mathf.Max(0, index));
+        currentIndex = Mathf.Min(10, Mathf.Max(0, index));
     }
 
     public void UseSelectedItem()

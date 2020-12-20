@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KeyItem : Pickup, Item
+public class KeyItem : Item
 {
     private string _name = "key";
     private int _code;

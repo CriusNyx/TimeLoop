@@ -6,6 +6,7 @@ using System.Collections;
  */ 
 public class Pickup : MonoBehaviour
 {
+    [SerializeField, SerializeReference]
     public Item item;
 
     protected BoxCollider pickupCollider;
