@@ -81,6 +81,17 @@ public class Player : TimeBehaviour
 
         rigidbody.velocity = state.velocity;
 
+        Vector3 flatVelocity = state.velocity;
+
+        if (flatVelocity.magnitude > 0.1f)
+        {
+            flatVelocity.y = 0f;
+            flatVelocity = Vector3.Normalize(flatVelocity);
+            float theta = -Mathf.Atan2(flatVelocity.z, flatVelocity.x) * Mathf.Rad2Deg + 90f;
+            Quaternion rot = Quaternion.Euler(-90f, theta, 0f);
+            gameObject.transform.Find("Player Model").transform.rotation = rot;
+        }
+
         state.buffer = new InputBuffer();
     }
 
