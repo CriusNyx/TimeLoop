@@ -47,6 +47,7 @@ public class WalkingBehaviour : PlayerBehaviour
 
         state.hasGrappelJump = true;
         state.airDash = true;
+        state.canDoubleJump = true;
 
         CheckAirDash(state);
     }
@@ -102,6 +103,12 @@ public class WalkingBehaviour : PlayerBehaviour
     {
         UpdateVelocty(state, Player.airAcceleration, false, true);
         CheckAirDash(state);
+
+        if (state.buffer.jump && state.canDoubleJump)
+        {
+            state.canDoubleJump = false;
+            state.velocity.y = Player.jumpSpeed;
+        }
     }
 
     private static void CheckAirDash(PlayerState state)
