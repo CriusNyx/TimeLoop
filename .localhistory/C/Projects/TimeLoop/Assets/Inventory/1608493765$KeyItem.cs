@@ -29,6 +29,7 @@ public class KeyItem : Item
     
     public override bool Use()
     {
+        Debug.Log("Use key");
         Collider[] colliders = Physics.OverlapSphere(GameObject.Find("Player").transform.position, 5f);
         foreach (var collider in colliders)
         {

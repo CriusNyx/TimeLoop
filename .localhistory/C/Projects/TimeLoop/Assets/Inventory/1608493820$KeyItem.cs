@@ -29,9 +29,11 @@ public class KeyItem : Item
     
     public override bool Use()
     {
+        Debug.Log("Use key");
         Collider[] colliders = Physics.OverlapSphere(GameObject.Find("Player").transform.position, 5f);
         foreach (var collider in colliders)
         {
+            Debug.Log(collider.gameObject.name);
             LockedDoor door = collider.gameObject.GetComponent<LockedDoor>();
             if(door != null && door.locked && door.code == _code)
             {
