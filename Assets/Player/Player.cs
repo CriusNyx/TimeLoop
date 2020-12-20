@@ -21,7 +21,11 @@ public class Player : TimeBehaviour
     public const float groundDetectionDistance = 1.6f;
 
     public const float groundAcceleration = 150f;
+    public const float airAcceleration = 20f;
     public const float maxVelocity = 15f;
+    public const float gravityAcceleration = 20f;
+
+    public const float jumpSpeed = 20f;
 
     PlayerState state;
     public PlayerBehaviour behaviour = new WalkingBehaviour();
@@ -49,6 +53,10 @@ public class Player : TimeBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             state.buffer.jump = true;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            state.buffer.grappelHook = true;
         }
     }
 
