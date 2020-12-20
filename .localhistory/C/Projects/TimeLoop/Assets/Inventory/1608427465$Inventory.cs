@@ -24,11 +24,6 @@ public class Inventory : TimeBehaviour
         }
     }
 
-    public Item[] GetItems()
-    {
-        return items;
-    }
-
     public Item GetItem(int index)
     {
         return items[index];

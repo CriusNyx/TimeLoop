@@ -7,7 +7,7 @@ public class GameOverlay : TimeBehaviour
 {
     bool isPaused = false;
     Inventory playerInventory;
-    GameObject[] slots = new GameObject[Inventory.MAX_ITEMS];
+    GameObject[] slots;
     
 
     // Start is called before the first frame update

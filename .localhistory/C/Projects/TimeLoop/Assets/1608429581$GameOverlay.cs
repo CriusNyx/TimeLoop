@@ -52,7 +52,9 @@ public class GameOverlay : TimeBehaviour
             // Set images
             if (items[i] != null)
             {
-                slots[i].GetComponent<Image>().sprite = items[i].GetSprite();
+                Debug.Log(slots[i]);
+                    
+                    //.sprite = items[i].GetSprite();
             }
         }
     }
