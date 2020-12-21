@@ -7,6 +7,8 @@ public class TimeLoopSceneManager : MonoBehaviour
 {
     float timeRemaining = 60 * 5;
 
+    public Animator playerAnimator;
+
     private void Awake()
     {
     }
@@ -15,9 +17,11 @@ public class TimeLoopSceneManager : MonoBehaviour
     {
         return FindObjectOfType<TimeLoopSceneManager>();
     }
-    public void TriggerDeath()
+    public IEnumerator TriggerDeath()
     {
+        playerAnimator.SetTrigger("doDeath");
         // TODO: add some on death effect
+        yield return new WaitForSeconds(0.5f);
         Restart();
     }
 
@@ -35,7 +39,7 @@ public class TimeLoopSceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            TriggerDeath();
+            StartCoroutine(TriggerDeath());
         }
 
         if (timeRemaining > 0)
@@ -48,7 +52,7 @@ public class TimeLoopSceneManager : MonoBehaviour
         }
         else
         {
-            TriggerDeath();
+            StartCoroutine(TriggerDeath());
             timeRemaining = 0;
         }
     }
