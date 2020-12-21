@@ -10,7 +10,7 @@ public class Player : TimeBehaviour
     new Rigidbody rigidbody;
     new SphereCollider collider;
 
-    public new Camera camera;
+    public new GameObject camera;
     public float mouseSensitivity = 30f;
 
     private Vector2 mouseDelta;
@@ -44,7 +44,6 @@ public class Player : TimeBehaviour
 
     public void setJetBurn(bool val)
     {
-        Debug.Log("Set to " + val.ToString() + "\tCur: " + rocketSystem.isPlaying.ToString());
         if (val && !rocketSystem.isPlaying)
         {
             rocketSystem.Play();

@@ -11,7 +11,7 @@ public class PlayerState
 
     public bool airDash = true;
     public float airDashCooldown = -1f;
-    public bool canGrapple;
+    public bool canGrapple = true;
     public float grappleHookCooldown = -1f;
 
     public bool canDoubleJump = false;

@@ -47,7 +47,7 @@ public class JumpCharge : PlayerBehaviour
             {
                 Vector3 side = direction * Mathf.Cos(Mathf.PI / 4f) * v;
                 Vector3 up = Vector3.up * Mathf.Sin(Mathf.PI / 4f) * v;
-                state.velocity = side + up;
+                state.velocity = side * 1.5f + up;
             }
             //Debug.Log(state.velocity);
             state.player.anim.SetBool("jumpCharged", true);
