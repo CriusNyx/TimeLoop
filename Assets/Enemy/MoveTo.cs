@@ -20,7 +20,7 @@ public class MoveTo : MonoBehaviour
         {
             agent.destination = nextDestination.transform.position;
             nextDestination = nextDestination.next;
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(3);
             StartCoroutine(Patrol(agent));
         }
 

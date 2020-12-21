@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = (transform.forward  * speed);
+        Destroy(gameObject, 4);
     }
 
     // Update is called once per frame
@@ -18,7 +19,7 @@ public class Projectile : MonoBehaviour
     { 
     }
 
-    void OnCollisionEnter(Collision c)
+    void OnTriggerEnter(Collider c)
     {
         if(c.gameObject.name == "Player")
         {
