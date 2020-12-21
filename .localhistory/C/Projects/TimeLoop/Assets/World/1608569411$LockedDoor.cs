@@ -30,12 +30,10 @@ public class LockedDoor : MonoBehaviour
             Item[] items = inventory.GetItems();
             for(var i = 0; i < items.Length; i++)
             {
-                // Just accept any type of key item for now I guess
-                if (items[i] != null && items[i].GetType() == typeof(KeyItem))
+                if (items[i].GetType() == typeof(KeyItem))
                 {
                     Open();
                     items[i] = null;
-                    return;
                 }
             }
         }
@@ -60,6 +58,5 @@ public class LockedDoor : MonoBehaviour
     public void Open()
     {
         locked = false;
-        boxCollider.enabled = false;
     }
 }

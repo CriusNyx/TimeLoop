@@ -60,6 +60,5 @@ public class LockedDoor : MonoBehaviour
     public void Open()
     {
         locked = false;
-        boxCollider.enabled = false;
     }
 }
