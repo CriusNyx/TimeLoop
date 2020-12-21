@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,10 +38,13 @@ public class Player : TimeBehaviour
     public PlayerState state;
     public PlayerBehaviour behaviour = new WalkingBehaviour();
 
+    private Animator anim;
+
     private void Awake()
     {
         rigidbody = gameObject.GetComponent<Rigidbody>();
         collider = gameObject.GetComponent<SphereCollider>();
+        anim = gameObject.GetComponent<Animator>();
 
         this.state = new PlayerState(this, rigidbody);
     }
@@ -65,6 +69,9 @@ public class Player : TimeBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             state.buffer.jump = true;
+            anim.SetBool("justJumped", true);
+            anim.SetBool("jumpCharged", true);
+            anim.Play("Jump");
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -73,15 +80,22 @@ public class Player : TimeBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             state.buffer.airDashPressed = true;
+            anim.SetBool("justJumped", true);
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {
             state.buffer.superJumpPressed = true;
+            anim.SetBool("justJumped", true);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             state.buffer.superJumpReleased = true;
+            anim.SetBool("jumpCharged", true);
+            anim.SetBool("justJumped", false);
         }
+
+        if (state.groundedLastFrame) anim.SetBool("inAir", false);
+        else anim.SetBool("inAir", true);
     }
 
     protected override void ProtectedFixedUpdate()
@@ -93,15 +107,22 @@ public class Player : TimeBehaviour
 
         rigidbody.velocity = state.velocity;
 
-        Vector3 flatVelocity = state.velocity;
+        Vector3 flatVelocity = new Vector3(state.velocity.x, 0f, state.velocity.z);
 
         if (flatVelocity.magnitude > 0.1f)
         {
+            anim.SetBool("isMoving", true);
             flatVelocity.y = 0f;
             flatVelocity = Vector3.Normalize(flatVelocity);
             float theta = -Mathf.Atan2(flatVelocity.z, flatVelocity.x) * Mathf.Rad2Deg + 90f;
             Quaternion rot = Quaternion.Euler(0f, theta, 0f);
-            gameObject.transform.Find("Player Model").transform.rotation = rot;
+            if(anim.GetBool("isDashing") == false)
+            {
+                gameObject.transform.Find("Player Model").transform.rotation = rot;
+            }
+        } else
+        {
+            anim.SetBool("isMoving", false);
         }
 
         state.buffer = new InputBuffer(state.buffer);

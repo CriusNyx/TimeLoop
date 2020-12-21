@@ -2,6 +2,8 @@
 
 public class WalkingBehaviour : PlayerBehaviour
 {
+    
+
     public override void Update(PlayerState state)
     {
         PhysicsUpdate(state);
@@ -19,7 +21,9 @@ public class WalkingBehaviour : PlayerBehaviour
             {
                 if (grappelHit.collider.tag == "Grappleable")
                 {
+                    Animator anim = state.player.GetComponent<Animator>();
                     state.player.behaviour = new GrappleHookBehaviour(grappelHit.point);
+                    anim.SetBool("isGrappling", true);
                 }
             }
         }
@@ -72,22 +76,47 @@ public class WalkingBehaviour : PlayerBehaviour
     {
         if (state.buffer.airDashPressed && state.airDash && Time.time > state.airDashCooldown)
         {
+            Animator anim = state.player.GetComponent<Animator>();
             Vector3 playerInput = Vector3.zero;
             if (Input.GetKey(KeyCode.A))
             {
                 playerInput.x -= 1;
+                if (anim.GetBool("inAir"))
+                {
+                    anim.SetBool("isDashing", true);
+                    anim.SetInteger("direction", 3);
+                    anim.Play("Left Dash");
+                }
             }
             if (Input.GetKey(KeyCode.D))
             {
                 playerInput.x += 1;
+                if (anim.GetBool("inAir"))
+                {
+                    anim.SetBool("isDashing", true);
+                    anim.SetInteger("direction", 1);
+                    anim.Play("Right Dash");
+                }
             }
             if (Input.GetKey(KeyCode.S))
             {
                 playerInput.z -= 1;
+                if (anim.GetBool("inAir"))
+                {
+                    anim.SetBool("isDashing", true);
+                    anim.SetInteger("direction", 2);
+                    anim.Play("Back Dash");
+                }
             }
             if (Input.GetKey(KeyCode.W))
             {
                 playerInput.z += 1;
+                if (anim.GetBool("inAir"))
+                {
+                    anim.SetBool("isDashing", true);
+                    anim.SetInteger("direction", 0);
+                    anim.Play("Forward Dash");
+                }
             }
 
             if (playerInput.magnitude > 1f)
@@ -103,7 +132,8 @@ public class WalkingBehaviour : PlayerBehaviour
             {
                 state.airDashCooldown = Time.time + 1f;
                 state.airDash = false;
-                Quaternion rotation = Quaternion.Euler(0f, state.player.mousePosition.x, 0f);
+                Quaternion rotation;
+                rotation = Quaternion.Euler(0f, state.player.mousePosition.x, 0f);
                 Vector3 direction = rotation * playerInput;
                 state.player.behaviour = new AirDashBehaviour(direction);
             }
