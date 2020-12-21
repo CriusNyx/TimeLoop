@@ -8,18 +8,26 @@ public class GroundEnemy : MonoBehaviour
     public float bulletSpawnHeight = 1.5f;
     public float spawnDistance = 1.25f;
     private int counter = 0;
+    public bool fixedRotation = false;
+    public float rotationIfFixed = 90f;
+    Transform t;
     void Start()
     {
+        t = transform;
     }
 
     // Update is called once per frame
     void Update()
     {
         counter++;
-        if (counter == 960)
+        if (counter == 30)
         {
             FireBullets();
             counter = 0;
+        }
+        if(fixedRotation == true)
+        {
+            t.eulerAngles = new Vector3(t.eulerAngles.x, rotationIfFixed, t.eulerAngles.z);
         }
     }
     void FireBullets()
@@ -28,8 +36,11 @@ public class GroundEnemy : MonoBehaviour
     }
     void OnCollisionEnter(Collision c)
     {
-        TimeLoopSceneManager sm = UnityEngine.Object.FindObjectOfType<TimeLoopSceneManager>();
-        sm.TriggerDeath();
+        if (c.gameObject.name == "Player")
+        {
+            TimeLoopSceneManager sm = UnityEngine.Object.FindObjectOfType<TimeLoopSceneManager>();
+            sm.TriggerDeath();
+        }
         
     }
 }
