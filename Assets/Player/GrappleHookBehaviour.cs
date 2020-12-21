@@ -7,6 +7,8 @@ public class GrappleHookBehaviour : PlayerBehaviour
     public Vector3 target;
     private float timeToStop;
 
+    GameObject grappleHookLine;
+
     public GrappleHookBehaviour(Vector3 target)
     {
         this.target = target;
@@ -15,7 +17,11 @@ public class GrappleHookBehaviour : PlayerBehaviour
 
     public override void Update(PlayerState state)
     {
-        LineRenderer grappleLineRenderer = GameObject.Find("GrappleLineRenderer").GetComponent<LineRenderer>();
+        if(grappleHookLine == null)
+        {
+            grappleHookLine = Object.Instantiate(Resources.Load<GameObject>("Prefabs/GrappleLineRenderer"));
+        }
+        LineRenderer grappleLineRenderer = grappleHookLine.GetComponent<LineRenderer>();
         grappleLineRenderer.SetPositions(new Vector3[] { state.player.transform.position, target });
         grappleLineRenderer.widthMultiplier = 0.1f;
         grappleLineRenderer.enabled = true;
@@ -43,7 +49,7 @@ public class GrappleHookBehaviour : PlayerBehaviour
             state.groundedLastFrame = false;
         }
 
-        state.grappleHookCooldown = Time.time + Player.grappleHookCooldown;
+        state.canGrapple = false;
     }
 
     public void Break(PlayerState state, LineRenderer grappleLineRenderer, bool jump)

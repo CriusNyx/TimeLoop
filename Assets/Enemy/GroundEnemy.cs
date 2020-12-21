@@ -10,7 +10,6 @@ public class GroundEnemy : MonoBehaviour
     private int counter = 0;
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -25,8 +24,12 @@ public class GroundEnemy : MonoBehaviour
     }
     void FireBullets()
     {
-        Debug.Log("Bullet Fired.");
-        //  GameObject bullet = Instantiate(Projectile, new Vector3(transform.position.x, transform.position.y + 1.25f, transform.position.z), transform.localRotation) as GameObject;
         GameObject bullet = Instantiate(Projectile, (bulletSpawnHeight * Vector3.up) + transform.position + transform.forward * spawnDistance, transform.rotation) as GameObject;
+    }
+    void OnCollisionEnter(Collision c)
+    {
+        TimeLoopSceneManager sm = UnityEngine.Object.FindObjectOfType<TimeLoopSceneManager>();
+        sm.TriggerDeath();
+        
     }
 }

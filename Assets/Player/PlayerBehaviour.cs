@@ -33,4 +33,54 @@ public abstract class PlayerBehaviour
         pos.y = hit.point.y + Player.hoverDistance;
         state.player.transform.position = pos;
     }
+
+    protected void UpdateVelocty(PlayerState state, float acceleration, bool flatten, bool applyGravity, bool doInput)
+    {
+        Vector3 velocity = state.velocity;
+        Vector3 flatVelocity = velocity;
+        flatVelocity.y = 0f;
+
+        Vector3 input = Vector3.zero;
+        if (doInput)
+        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                input.x -= 1f;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                input.x += 1f;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                input.z -= 1f;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                input.z += 1f;
+            }
+        }
+
+        if (input.magnitude > 1f)
+        {
+            input = input.normalized;
+        }
+
+        Quaternion inputOrientation = Quaternion.Euler(0f, state.player.mousePosition.x, 0f);
+
+        Vector3 targetVelocty = inputOrientation * input * Player.maxVelocity;
+
+        flatVelocity = Vector3.MoveTowards(flatVelocity, targetVelocty, acceleration * Time.fixedDeltaTime);
+
+        if (!flatten)
+        {
+            flatVelocity.y = velocity.y;
+        }
+        if (applyGravity)
+        {
+            flatVelocity.y += -Player.gravityAcceleration * Time.fixedDeltaTime;
+        }
+
+        state.velocity = flatVelocity;
+    }
 }

@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 
-public interface Item
+public abstract class Item
 {
-    void Use();
-    void OnPickup();
-    Sprite GetSprite();
-    string Name { get; set; }
+    /**
+     * Return true on successful use of item
+     */
+    public abstract bool Use();
+    public abstract void OnPickup();
+    public abstract Sprite GetSprite();
+    public string Name = "NAME NOT SET";
+    public bool IsConsumable = false;
 }

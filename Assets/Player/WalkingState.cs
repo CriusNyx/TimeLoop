@@ -9,15 +9,18 @@ public class WalkingBehaviour : PlayerBehaviour
 
     private void PhysicsUpdate(PlayerState state)
     {
-        if (state.buffer.grappelHook && Time.time > state.grappleHookCooldown)
+        if (state.buffer.grappelHook && state.canGrapple && PlayerPowerupState.hasGrappleUnlocked)
         {
             Camera camera = state.player.camera;
             Vector3 position = camera.transform.position;
             Vector3 forward = camera.transform.forward;
 
-            if(Physics.Raycast(position, forward, out RaycastHit grappelHit, Player.grappleHookDistance, LayerMask.GetMask("Default")))
+            if (Physics.Raycast(position, forward, out RaycastHit grappelHit, Player.grappleHookDistance, LayerMask.GetMask("Default")))
             {
-                state.player.behaviour = new GrappleHookBehaviour(grappelHit.point);
+                if (grappelHit.collider.tag == "Grappleable")
+                {
+                    state.player.behaviour = new GrappleHookBehaviour(grappelHit.point);
+                }
             }
         }
 
@@ -36,81 +39,39 @@ public class WalkingBehaviour : PlayerBehaviour
     private void GroundUpdate(PlayerState state, RaycastHit hit)
     {
         SnapToGround(state, hit);
-        UpdateVelocty(state, Player.groundAcceleration, true, false);
+        UpdateVelocty(state, Player.groundAcceleration, true, false, true);
 
         if (state.buffer.jump)
         {
-            Vector3 v = state.velocity;
-            v.y = Player.jumpSpeed;
-            state.velocity = v;
+            float y = Player.jumpSpeed;
+
+            state.velocity.y = y;
         }
 
         state.hasGrappelJump = true;
         state.airDash = true;
+        state.canDoubleJump = true;
+        state.canGrapple = true;
 
         CheckAirDash(state);
-    }
-
-    private void UpdateVelocty(PlayerState state, float acceleration, bool flatten, bool applyGravity)
-    {
-        Vector3 velocity = state.velocity;
-        Vector3 flatVelocity = velocity;
-        flatVelocity.y = 0f;
-
-        Vector3 input = Vector3.zero;
-        if (Input.GetKey(KeyCode.A))
-        {
-            input.x -= 1f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            input.x += 1f;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            input.z -= 1f;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            input.z += 1f;
-        }
-
-        if (input.magnitude > 1f)
-        {
-            input = input.normalized;
-        }
-
-        Quaternion inputOrientation = Quaternion.Euler(0f, state.player.mousePosition.x, 0f);
-
-        Vector3 targetVelocty = inputOrientation * input * Player.maxVelocity;
-
-        flatVelocity = Vector3.MoveTowards(flatVelocity, targetVelocty, acceleration * Time.fixedDeltaTime);
-
-        if (!flatten)
-        {
-            flatVelocity.y = velocity.y;
-        }
-        if (applyGravity)
-        {
-            flatVelocity.y += -Player.gravityAcceleration * Time.fixedDeltaTime;
-        }
-
-        state.velocity = flatVelocity;
     }
 
     private void AirUpdate(PlayerState state)
     {
-        UpdateVelocty(state, Player.airAcceleration, false, true);
+        UpdateVelocty(state, Player.airAcceleration, false, true, true);
         CheckAirDash(state);
+
+        if (state.buffer.jump && state.canDoubleJump)
+        {
+            state.canDoubleJump = false;
+            state.velocity.y = Player.jumpSpeed;
+        }
     }
 
     private static void CheckAirDash(PlayerState state)
     {
         if (state.buffer.airDashPressed && state.airDash && Time.time > state.airDashCooldown)
         {
-            state.airDashCooldown = Time.time + 1f;
-            state.airDash = false;
-
             Vector3 playerInput = Vector3.zero;
             if (Input.GetKey(KeyCode.A))
             {
@@ -133,8 +94,15 @@ public class WalkingBehaviour : PlayerBehaviour
             {
                 playerInput = Vector3.Normalize(playerInput);
             }
-            if (playerInput.magnitude != 0)
+            if (playerInput.magnitude == 0)
             {
+                if (state.groundedLastFrame)
+                    state.player.behaviour = new JumpCharge();
+            }
+            else
+            {
+                state.airDashCooldown = Time.time + 1f;
+                state.airDash = false;
                 Quaternion rotation = Quaternion.Euler(0f, state.player.mousePosition.x, 0f);
                 Vector3 direction = rotation * playerInput;
                 state.player.behaviour = new AirDashBehaviour(direction);

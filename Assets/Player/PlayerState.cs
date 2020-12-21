@@ -11,9 +11,12 @@ public class PlayerState
 
     public bool airDash = true;
     public float airDashCooldown = -1f;
+    public bool canGrapple;
     public float grappleHookCooldown = -1f;
 
-    public InputBuffer buffer = new InputBuffer();
+    public bool canDoubleJump = false;
+
+    public InputBuffer buffer = new InputBuffer(null);
 
     public PlayerState(Player player, Rigidbody rigidbody)
     {

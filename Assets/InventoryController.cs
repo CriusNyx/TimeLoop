@@ -9,11 +9,11 @@ public class InventoryController : TimeBehaviour
     GameObject[] slots = new GameObject[Inventory.MAX_ITEMS];
     GameObject statusPanel;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        playerInventory = GameObject.Find("Player").GetComponent<Inventory>();
         statusPanel = transform.Find("StatusPanel").gameObject;
+        float inventoryWidth = statusPanel.GetComponent<RectTransform>().rect.width - 200;
+        float yPosition = -(statusPanel.GetComponent<RectTransform>().rect.height / 2) + 100;
 
         // Draw inventory slots
         for (var i = 0; i < Inventory.MAX_ITEMS; i++)
@@ -23,11 +23,16 @@ public class InventoryController : TimeBehaviour
             icon.AddComponent<Outline>();
             icon.GetComponent<Outline>().effectColor = Color.red;
             icon.transform.SetParent(statusPanel.transform);
-            //Debug.Log(GetComponent<RectTransform>().rect.width / 2);
-            icon.transform.Translate(new Vector3(150 + (i * 200), 150, 0));
+
+            icon.transform.localPosition = new Vector3((inventoryWidth/Inventory.MAX_ITEMS * i) - (inventoryWidth / 2) + icon.GetComponent<RectTransform>().rect.width, yPosition, 0);
             slots[i] = icon;
         }
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerInventory = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -41,9 +46,8 @@ public class InventoryController : TimeBehaviour
             playerInventory.SelectPreviousItem();
         }
 
-
         // Crappy number selection lol
-        for(int i = 48; i < 58; i++)
+        for (int i = 48; i < 58; i++)
         {
             if (Input.GetKeyDown((KeyCode) i))
             {

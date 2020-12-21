@@ -15,6 +15,8 @@ public class Pickup : MonoBehaviour
         pickupCollider = gameObject.AddComponent<BoxCollider>();
         pickupCollider.size = Vector3.one * 2;
         pickupCollider.isTrigger = true;
+
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
 
     // Use this for initialization
@@ -40,7 +42,6 @@ public class Pickup : MonoBehaviour
         if (inventory != null)
         {
             inventory.AddItem(item);
-            Debug.Log("Picked up item!~");
             Destroy(gameObject);
         }
     }

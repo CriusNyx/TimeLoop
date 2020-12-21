@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SphereCollider))]
 public class Player : TimeBehaviour
@@ -31,6 +30,7 @@ public class Player : TimeBehaviour
     public const float grappleHookCooldown = 2f;
 
     public const float jumpSpeed = 20f;
+    public const float highJumpSpeed = 40f;
 
     public const int maxAirDashes = 2;
 
@@ -55,6 +55,9 @@ public class Player : TimeBehaviour
 
     private void Update()
     {
+        gameObject.transform.Find("Char Base Unity 1/Gun").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasGrappleUnlocked;
+        gameObject.transform.Find("Char Base Unity 1/Booster").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasSuperJump;
+
         float mouseX = Input.GetAxisRaw("Mouse X");
         float mouseY = Input.GetAxisRaw("Mouse Y");
         mouseDelta += new Vector2(mouseX, mouseY) * mouseSensitivity * Time.deltaTime;
@@ -70,6 +73,14 @@ public class Player : TimeBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             state.buffer.airDashPressed = true;
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            state.buffer.superJumpPressed = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            state.buffer.superJumpReleased = true;
         }
     }
 
@@ -93,7 +104,7 @@ public class Player : TimeBehaviour
             gameObject.transform.Find("Player Model").transform.rotation = rot;
         }
 
-        state.buffer = new InputBuffer();
+        state.buffer = new InputBuffer(state.buffer);
     }
 
     private void UpdateCamera()

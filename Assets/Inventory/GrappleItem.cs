@@ -6,26 +6,25 @@ public class GrappleItem : Item
 {
     private Sprite _sprite;
 
-    public string Name { get; set; } = "Grapple hook";
-
     public GrappleItem()
     {
         _sprite = Resources.Load<Sprite>("grap");
     }
 
-    public Sprite GetSprite()
+    public override Sprite GetSprite()
     {
         return _sprite;
     }
 
-    public void OnPickup()
-    {
-        throw new System.NotImplementedException();
-    }
-
     // Do something if door is nearby? Check for door somehow?
-    public void Use()
+    public override bool Use()
     {
         GameObject.Find("Player").GetComponent<Player>().state.buffer.grappelHook = true;
+        return true;
+    }
+
+    public override void OnPickup()
+    {
+        throw new System.NotImplementedException();
     }
 }
