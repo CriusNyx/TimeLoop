@@ -39,7 +39,7 @@ public class GameOverlay : TimeBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Giving up...");
+        Debug.Log("Giving up...")
         Application.Quit();
     }
 
