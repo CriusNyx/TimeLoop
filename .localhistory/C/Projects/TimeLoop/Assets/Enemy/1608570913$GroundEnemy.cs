@@ -17,11 +17,11 @@ public class GroundEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        counter += Time.deltaTime;
-        if (counter >= (1f / shotsPerSeconds))
+        counter++;
+        if (counter >= (60f / shotsPerSeconds))
         {
             FireBullets();
-            counter -= (1f / shotsPerSeconds);
+            counter -= (60f / shotsPerSeconds);
         }
     }
     void FireBullets()

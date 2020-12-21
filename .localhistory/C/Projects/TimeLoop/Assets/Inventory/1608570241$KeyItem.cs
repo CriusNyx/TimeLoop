@@ -7,8 +7,6 @@ public class KeyItem : Item
     private Color _color;
     private Sprite _sprite;
 
-    public int Code { get => _code; }
-
     public KeyItem(int code, Color color)
     {
         _code = code;
