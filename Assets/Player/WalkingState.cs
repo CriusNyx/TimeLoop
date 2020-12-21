@@ -13,7 +13,7 @@ public class WalkingBehaviour : PlayerBehaviour
     {
         if (state.buffer.grappelHook && state.canGrapple && PlayerPowerupState.hasGrappleUnlocked)
         {
-            Camera camera = state.player.camera;
+            GameObject camera = state.player.camera;
             Vector3 position = camera.transform.position;
             Vector3 forward = camera.transform.forward;
 
