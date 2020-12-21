@@ -2015,6 +2015,8 @@ MonoBehaviour:
   track3: {fileID: 1684531774}
   selector: 1
   currentSong: {fileID: 0}
+  crunch: {fileID: 1684531779}
+  woosh: {fileID: 1684531780}
 --- !u!4 &1684531778
 Transform:
   m_ObjectHideFlags: 0
@@ -2040,7 +2042,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f27b95f373a6d5e41a36adbb51813acb, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2136,7 +2138,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f04838b0f788bae40aae0b791c8fcfa2, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

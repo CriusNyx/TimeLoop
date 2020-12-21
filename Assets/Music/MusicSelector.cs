@@ -9,6 +9,8 @@ public class MusicSelector : MonoBehaviour
     public AudioSource track3;
     public int selector = 1;
     public AudioSource currentSong;
+    public AudioSource crunch;
+    public AudioSource woosh;
     void Start()
     {
         SelectNextTrack();
@@ -27,6 +29,22 @@ public class MusicSelector : MonoBehaviour
         {
             SelectNextTrack();
         }
+    }
+
+    public void startPlayingWoosh()
+    {
+        if (woosh.isPlaying == false)
+        {
+            woosh.Play();
+        }
+    }
+    public void stopWoosh()
+    {
+        woosh.Stop();
+    }
+    public void playCrunch()
+    {
+        crunch.Play();
     }
 
     //choose the next track to play

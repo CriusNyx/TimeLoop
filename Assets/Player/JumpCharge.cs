@@ -51,6 +51,8 @@ public class JumpCharge : PlayerBehaviour
             }
             //Debug.Log(state.velocity);
             state.player.anim.SetBool("jumpCharged", true);
+            MusicSelector m = UnityEngine.Object.FindObjectOfType<MusicSelector>();
+            m.startPlayingWoosh();
             state.player.behaviour = new WalkingBehaviour();
         }
         else
