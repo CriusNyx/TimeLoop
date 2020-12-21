@@ -1150,7 +1150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5356266335064128495, guid: f2a1027442ec211448846fda7a8a7750, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2731051330982535666, guid: f2a1027442ec211448846fda7a8a7750, type: 3}
       propertyPath: m_Height
@@ -1211,6 +1211,10 @@ PrefabInstance:
     - target: {fileID: 2731051330982535679, guid: f2a1027442ec211448846fda7a8a7750, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233196213063012338, guid: f2a1027442ec211448846fda7a8a7750, type: 3}
+      propertyPath: fixedRotation
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2a1027442ec211448846fda7a8a7750, type: 3}
