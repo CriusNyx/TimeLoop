@@ -18,10 +18,10 @@ public class GroundEnemy : MonoBehaviour
     void Update()
     {
         counter += Time.deltaTime;
-        if (counter >= (1f / shotsPerSeconds))
+        if (counter >= (2f / shotsPerSeconds))
         {
             FireBullets();
-            counter -= (1f / shotsPerSeconds);
+            counter -= (2f / shotsPerSeconds);
         }
     }
     void FireBullets()

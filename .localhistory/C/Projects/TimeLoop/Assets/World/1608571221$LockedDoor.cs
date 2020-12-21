@@ -31,7 +31,7 @@ public class LockedDoor : MonoBehaviour
             for(var i = 0; i < items.Length; i++)
             {
                 // Just accept any type of key item for now I guess
-                if (items[i] != null && items[i].GetType() == typeof(KeyItem) && ((KeyItem)items[i]).Code == code)
+                if (items[i] != null && items[i].GetType() == typeof(KeyItem))
                 {
                     Open();
                     items[i] = null;
