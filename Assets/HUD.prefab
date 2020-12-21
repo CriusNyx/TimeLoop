@@ -618,27 +618,27 @@ MonoBehaviour:
     to help you escape.
 
 
-    Doors blocking your path can be unlocked with <color=red>keys</color>.
+    Find all 4 <color=red>keys</color> and take them to
+    the end door before the timer runs up.
 
 
-    W/S/A/D:
-    Move
+    W/S/A/D: Move
 
-    Space: Jump / Double Jump
+    Space: Jump /
+    Double Jump
 
     Shift: Dash
 
 
     With Grapple Hook
 
-    Click:
-    Grapple Islands
+    Click: Grapple Islands
 
 
-    With Jump Pack
+    With
+    Jump Pack
 
-    Stand Shill + Hold Shift: Charge Super
-    Jump'
+    Stand Shill + Hold Shift: Charge Super Jump'
 --- !u!1 &6877739425704999469
 GameObject:
   m_ObjectHideFlags: 0
