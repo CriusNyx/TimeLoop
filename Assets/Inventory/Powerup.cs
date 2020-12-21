@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Powerup : Pickup
 {
@@ -7,7 +8,8 @@ public class Powerup : Pickup
     {
         Grapple,
         Jet,
-        Card
+        Card,
+        End
     }
 
     public PowerupType powerupType;
@@ -85,6 +87,10 @@ public class Powerup : Pickup
                 case PowerupType.Card:
                     playerInventory.AddItem(new KeyItem(0, Color.red));
                     GameObject.Find("FinalPath").GetComponent<DoorManager>().UnlockNextDoor();
+                    break;
+                case PowerupType.End:
+                    PlayerPowerupState.isWin = true;
+                    SceneManager.LoadScene("Title");
                     break;
             }
         
