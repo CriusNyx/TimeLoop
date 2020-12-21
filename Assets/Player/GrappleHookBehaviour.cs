@@ -54,6 +54,7 @@ public class GrappleHookBehaviour : PlayerBehaviour
 
     public void Break(PlayerState state, LineRenderer grappleLineRenderer, bool jump)
     {
+        state.player.GetComponent<Animator>().SetBool("isGrappling", false);  
         if (jump)
         {
             state.hasGrappelJump = false;

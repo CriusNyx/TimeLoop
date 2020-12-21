@@ -82,16 +82,20 @@ public class Player : TimeBehaviour
             state.buffer.airDashPressed = true;
             anim.SetBool("justJumped", true);
         }
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        if (PlayerPowerupState.hasSuperJump)
         {
-            state.buffer.superJumpPressed = true;
-            anim.SetBool("justJumped", true);
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            state.buffer.superJumpReleased = true;
-            anim.SetBool("jumpCharged", true);
-            anim.SetBool("justJumped", false);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                state.buffer.superJumpPressed = true;
+                anim.SetBool("justJumped", true);
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                state.buffer.superJumpReleased = true;
+                anim.SetBool("jumpCharged", true);
+                anim.SetBool("justJumped", false);
+            }
         }
 
         if (state.groundedLastFrame) anim.SetBool("inAir", false);
