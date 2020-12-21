@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathPlane : MonoBehaviour
+public class FallingPlatform : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,12 +15,12 @@ public class DeathPlane : MonoBehaviour
     {
         
     }
-    void OnCollisionEnter(Collision c)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (c.gameObject.name == "Player")
+        if (collision.gameObject.GetComponent<Player>())
         {
-            TimeLoopSceneManager sm = UnityEngine.Object.FindObjectOfType<TimeLoopSceneManager>();
-            sm.TriggerDeath();
+            Debug.Log("wow");
         }
     }
 }

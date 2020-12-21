@@ -6,8 +6,7 @@ public class Powerup : Pickup
     public enum PowerupType
     {
         Grapple,
-        Jet,
-        Card
+        Jet
     }
 
     public PowerupType powerupType;
@@ -16,7 +15,6 @@ public class Powerup : Pickup
 
     private Vector3 start;
     private float rotAng = 0f;
-    private Inventory playerInventory;
     private void Start()
     {
         start = transform.position;
@@ -31,8 +29,6 @@ public class Powerup : Pickup
         {
             Destroy(gameObject);
         }
-
-        playerInventory = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
     private void Update()
@@ -54,9 +50,6 @@ public class Powerup : Pickup
                     break;
                 case PowerupType.Jet:
                     PlayerPowerupState.hasSuperJump = true;
-                    break;
-                case PowerupType.Card:
-                    playerInventory.AddItem(new KeyItem(123, Color.blue));
                     break;
             }
             Destroy(gameObject);
