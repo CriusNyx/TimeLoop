@@ -24,6 +24,7 @@ public class LockedDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        /*
         Inventory inventory = other.GetComponent<Inventory>();
         if (inventory)
         {
@@ -38,7 +39,7 @@ public class LockedDoor : MonoBehaviour
                     return;
                 }
             }
-        }
+        }*/
     }
 
     // Start is called before the first frame update
