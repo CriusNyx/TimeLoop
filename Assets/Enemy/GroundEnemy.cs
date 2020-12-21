@@ -9,12 +9,9 @@ public class GroundEnemy : MonoBehaviour
     public float spawnDistance = 1.25f;
     public int shotsPerSeconds = 2;
     private float counter = 0;
-    public bool fixedRotation = false;
-    public float rotationIfFixed = 90f;
-    Transform t;
     void Start()
     {
-        t = transform;
+
     }
 
     // Update is called once per frame
@@ -25,10 +22,6 @@ public class GroundEnemy : MonoBehaviour
         {
             FireBullets();
             counter -= (60f / shotsPerSeconds);
-        }
-        if(fixedRotation == true)
-        {
-            t.eulerAngles = new Vector3(t.eulerAngles.x, rotationIfFixed, t.eulerAngles.z);
         }
     }
     void FireBullets()
