@@ -77,6 +77,7 @@ public class Player : TimeBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         rigidbody.freezeRotation = true;
+        GetComponent<Inventory>().AddItem(new GrappleItem());
     }
 
     private void Update()
@@ -97,7 +98,7 @@ public class Player : TimeBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            state.buffer.grappelHook = true;
+            GetComponent<Inventory>().UseSelectedItem();
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {

@@ -17,14 +17,7 @@ public class TimeLoopSceneManager : MonoBehaviour
     {
         return FindObjectOfType<TimeLoopSceneManager>();
     }
-
-    public void TriggerDeath()
-    {
-        StartCoroutine(DeathEffect());
-    }
-
-
-    private IEnumerator DeathEffect()
+    public IEnumerator TriggerDeath()
     {
         playerAnimator.SetTrigger("doDeath");
         // TODO: add some on death effect
@@ -46,7 +39,7 @@ public class TimeLoopSceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            TriggerDeath();
+            StartCoroutine(TriggerDeath());
         }
 
         if (timeRemaining > 0)
@@ -59,7 +52,7 @@ public class TimeLoopSceneManager : MonoBehaviour
         }
         else
         {
-            TriggerDeath();
+            StartCoroutine(TriggerDeath());
             timeRemaining = 0;
         }
     }

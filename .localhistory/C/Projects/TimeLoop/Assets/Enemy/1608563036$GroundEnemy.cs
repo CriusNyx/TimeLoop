@@ -40,7 +40,7 @@ public class GroundEnemy : MonoBehaviour
         if (c.gameObject.name == "Player")
         {
             TimeLoopSceneManager sm = UnityEngine.Object.FindObjectOfType<TimeLoopSceneManager>();
-            sm.TriggerDeath();
+            StartCoroutine(sm.TriggerDeath());
         }
         
     }
