@@ -53,38 +53,26 @@ public class Powerup : Pickup
         MeshRenderer meshRendererComponent = textObject.GetComponent(typeof(MeshRenderer)) as MeshRenderer;
 
         textMeshComponent.text = text;
-        textMeshComponent.fontSize = 50;
-        textMeshComponent.anchor = TextAnchor.MiddleCenter;
-        textMeshComponent.alignment = TextAlignment.Center;
-
-
         textObject.transform.position = transform.position;
-        Quaternion q = Camera.main.transform.rotation;
-        q.eulerAngles = new Vector3(0, q.eulerAngles.y, q.eulerAngles.z);
-        textObject.transform.rotation = q;
-
-        textObject.transform.localScale = Vector3.one * 0.1f;
-
-        GameObject.Destroy(textObject, 20f);
     }
 
     protected override void OnPickup(Collider other)
     {
         if(other.tag == "Player")
         {
+        var pickupText;
             switch (powerupType)
             {
                 case PowerupType.Grapple:
                     PlayerPowerupState.hasGrappleUnlocked = true;
-                    CreatePickupHintText("Use the <color=red>grapple</color> on floating rocks!");
+                    CreatePickupHintText("The grapple can be used on floating rocks!");
                     break;
                 case PowerupType.Jet:
                     PlayerPowerupState.hasSuperJump = true;
-                    CreatePickupHintText("Hold <color=red>shift</color> while standing still to charge your <color=red>jet</color>!");
+                    CreatePickupHintText("Hold shift while standing still to charge your jet!");
                     break;
                 case PowerupType.Card:
                     playerInventory.AddItem(new KeyItem(0, Color.red));
-                    GameObject.Find("FinalPath").GetComponent<DoorManager>().UnlockNextDoor();
                     break;
             }
         
