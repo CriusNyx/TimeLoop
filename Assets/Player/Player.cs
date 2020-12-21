@@ -17,6 +17,8 @@ public class Player : TimeBehaviour
 
     public Vector2 mousePosition { get; private set; } = Vector2.zero;
 
+    public float lastYVelocity;
+
     public const float hoverDistance = 1.0f;
     public const float groundDetectionDistance = 1.1f;
 
@@ -34,6 +36,7 @@ public class Player : TimeBehaviour
     public const float highJumpSpeed = 40f;
 
     public const int maxAirDashes = 2;
+
 
     private ParticleSystem rocketSystem;
 
@@ -128,6 +131,10 @@ public class Player : TimeBehaviour
 
         if (state.groundedLastFrame) anim.SetBool("inAir", false);
         else anim.SetBool("inAir", true);
+        if(anim.GetBool("inAir") == true)
+        {
+            state.lastY = rigidbody.velocity.y;
+        }
     }
 
     protected override void ProtectedFixedUpdate()

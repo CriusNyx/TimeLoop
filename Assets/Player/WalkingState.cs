@@ -48,10 +48,12 @@ public class WalkingBehaviour : PlayerBehaviour
 
         if (!state.groundedLastFrame)
         {
-            //    if(state.has)
-            //{
-            //    //play sound here
-            //}
+
+            if (state.lastY < -25)
+            {
+                Debug.Log("Sound Playing");
+                //play sound here
+            }
         }
         if (state.buffer.superJumpPressed && !state.buffer.superJumpReleased)
         {
