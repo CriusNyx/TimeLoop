@@ -21,7 +21,8 @@ public class WalkingBehaviour : PlayerBehaviour
             {
                 if (grappelHit.collider.tag == "Grappleable")
                 {
-                    //play sound here
+                    MusicSelector m = UnityEngine.Object.FindObjectOfType<MusicSelector>();
+                    m.startPlayingWoosh();
                     Animator anim = state.player.GetComponent<Animator>();
                     state.player.behaviour = new GrappleHookBehaviour(grappelHit.point);
                     anim.SetBool("isGrappling", true);
@@ -48,11 +49,11 @@ public class WalkingBehaviour : PlayerBehaviour
 
         if (!state.groundedLastFrame)
         {
-
+            MusicSelector m = UnityEngine.Object.FindObjectOfType<MusicSelector>();
+            m.stopWoosh();
             if (state.lastY < -25)
             {
-                Debug.Log("Sound Playing");
-                //play sound here
+                m.playCrunch();
             }
         }
         if (state.buffer.superJumpPressed && !state.buffer.superJumpReleased)
