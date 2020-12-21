@@ -83,11 +83,10 @@ public class InventoryController : TimeBehaviour
             
 
             //Outline selected
-            //Disabled for now
-            //if (i == playerInventory.GetSelectedIndex())
-            //{
-            //    slots[i].GetComponent<Outline>().effectDistance = new Vector2(5f, 5f);
-            //}
+            if (i == playerInventory.GetSelectedIndex())
+            {
+                slots[i].GetComponent<Outline>().effectDistance = new Vector2(5f, 5f);
+            }
         }
     }
     
