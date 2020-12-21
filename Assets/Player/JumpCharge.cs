@@ -49,8 +49,8 @@ public class JumpCharge : PlayerBehaviour
                 Vector3 up = Vector3.up * Mathf.Sin(Mathf.PI / 4f) * v;
                 state.velocity = side + up;
             }
-            Debug.Log(state.velocity);
-
+            //Debug.Log(state.velocity);
+            state.player.anim.SetBool("jumpCharged", true);
             state.player.behaviour = new WalkingBehaviour();
         }
         else

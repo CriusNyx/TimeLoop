@@ -35,16 +35,39 @@ public class Player : TimeBehaviour
 
     public const int maxAirDashes = 2;
 
+    private ParticleSystem rocketSystem;
+
     public PlayerState state;
     public PlayerBehaviour behaviour = new WalkingBehaviour();
 
-    private Animator anim;
+    public Animator anim;
+
+    public void setJetBurn(bool val)
+    {
+        Debug.Log("Set to " + val.ToString() + "\tCur: " + rocketSystem.isPlaying.ToString());
+        if (val && !rocketSystem.isPlaying)
+        {
+            rocketSystem.Play();
+        } 
+        else if (!val && rocketSystem.isPlaying)
+        {
+            rocketSystem.Stop();
+        }
+       
+    }
+
+    public bool getJetBurn()
+    {
+        return rocketSystem.isPlaying;
+    }
 
     private void Awake()
     {
         rigidbody = gameObject.GetComponent<Rigidbody>();
         collider = gameObject.GetComponent<SphereCollider>();
         anim = gameObject.GetComponent<Animator>();
+        rocketSystem = gameObject.transform.Find("Player Model/Char Base Unity 1/Model Root/Skeleton/Torso/Pack Emitter").GetComponent<ParticleSystem>();
+        setJetBurn(false);
 
         this.state = new PlayerState(this, rigidbody);
     }
@@ -87,11 +110,14 @@ public class Player : TimeBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                state.player.anim.SetBool("jumpCharged", false);
+                setJetBurn(true);
                 state.buffer.superJumpPressed = true;
                 anim.SetBool("justJumped", true);
             }
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
+                setJetBurn(true);
                 state.buffer.superJumpReleased = true;
                 anim.SetBool("jumpCharged", true);
                 anim.SetBool("justJumped", false);

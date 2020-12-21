@@ -45,6 +45,15 @@ public class WalkingBehaviour : PlayerBehaviour
         SnapToGround(state, hit);
         UpdateVelocty(state, Player.groundAcceleration, true, false, true);
 
+        if (state.buffer.superJumpPressed && !state.buffer.superJumpReleased)
+        {
+            state.player.setJetBurn(true);
+        }
+        else
+        {
+            state.player.setJetBurn(false);
+        }
+
         if (state.buffer.jump)
         {
             float y = Player.jumpSpeed;
@@ -62,7 +71,14 @@ public class WalkingBehaviour : PlayerBehaviour
 
     private void AirUpdate(PlayerState state)
     {
+
         UpdateVelocty(state, Player.airAcceleration, false, true, true);
+
+        if (state.rigidbody.velocity.y <= 0)
+        {
+            state.player.setJetBurn(false);
+        }
+
         CheckAirDash(state);
 
         if (state.buffer.jump && state.canDoubleJump)
