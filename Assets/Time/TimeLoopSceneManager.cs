@@ -13,6 +13,10 @@ public class TimeLoopSceneManager : MonoBehaviour
     {
         return FindObjectOfType<TimeLoopSceneManager>();
     }
+    public void TriggerDeath()
+    {
+        SceneManager.LoadScene("TimeLoop");
+    }
 
     private void Start()
     {
@@ -23,7 +27,7 @@ public class TimeLoopSceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            SceneManager.LoadScene("TimeLoop");
+            TriggerDeath();
         }
     }
 }
