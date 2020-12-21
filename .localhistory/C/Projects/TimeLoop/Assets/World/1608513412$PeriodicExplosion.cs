@@ -37,7 +37,8 @@ public class PeriodicExplosion : TimeBehaviour
         var player = other.GetComponent<Player>();
         if (player)
         {
-            GameObject.Find("TimeLoopSceneManager").GetComponent<TimeLoopSceneManager>().TriggerDeath();
+            //player.Kill();
+            Debug.Log("IMPLEMENT PLAYER KILL");
         }
     }
 

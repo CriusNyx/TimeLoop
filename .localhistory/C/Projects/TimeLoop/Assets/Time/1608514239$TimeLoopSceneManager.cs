@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TimeLoopSceneManager : MonoBehaviour
 {
-    float timeRemaining = 60 * 5;
+    public float timeRemaining = 60 * 5;
 
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class TimeLoopSceneManager : MonoBehaviour
 
             float minutes = Mathf.FloorToInt((timeRemaining + 1) / 60);
             float seconds = Mathf.FloorToInt((timeRemaining + 1) % 60);
-            GameObject.Find("HUD").GetComponent<GameOverlay>().SetCountdownText(string.Format("{0:0}:{1:00}", minutes, seconds));
+            GameObject.Find("HUD").GetComponent<GameOverlay>().SetCountdownText(string.Format("{0:00}:{1:00}", minutes, seconds));
         }
         else
         {
