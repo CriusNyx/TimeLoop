@@ -37,12 +37,6 @@ public class GameOverlay : TimeBehaviour
         GameObject.Find("TimeLoopSceneManager").GetComponent<TimeLoopSceneManager>().Restart();
     }
 
-    public void QuitGame()
-    {
-        Debug.Log("Giving up...");
-        Application.Quit();
-    }
-
     public void SetCountdownText(string text)
     {
         transform.Find("StatusPanel/CountdownText").GetComponent<Text>().text = text;
