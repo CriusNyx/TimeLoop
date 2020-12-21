@@ -6,7 +6,7 @@ using System.Collections.Generic;
  */
 public class Inventory : TimeBehaviour
 {
-    public static int MAX_ITEMS = 4;
+    public static int MAX_ITEMS = 10;
 
     Item[] items = new Item[MAX_ITEMS];
 
