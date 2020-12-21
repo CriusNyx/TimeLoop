@@ -12,6 +12,7 @@ public class InventoryController : TimeBehaviour
     private void Awake()
     {
         statusPanel = transform.Find("StatusPanel").gameObject;
+        float inventoryWidth = statusPanel.GetComponent<RectTransform>().rect.width - 200;
         float yPosition = -(statusPanel.GetComponent<RectTransform>().rect.height / 2) + 100;
 
         // Draw inventory slots
@@ -81,8 +82,6 @@ public class InventoryController : TimeBehaviour
                 slots[i].GetComponent<Image>().sprite = items[i].GetSprite();
             }
             
-
-            //Outline selected
             if (i == playerInventory.GetSelectedIndex())
             {
                 slots[i].GetComponent<Outline>().effectDistance = new Vector2(5f, 5f);

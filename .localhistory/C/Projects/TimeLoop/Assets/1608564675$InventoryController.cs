@@ -81,8 +81,6 @@ public class InventoryController : TimeBehaviour
                 slots[i].GetComponent<Image>().sprite = items[i].GetSprite();
             }
             
-
-            //Outline selected
             if (i == playerInventory.GetSelectedIndex())
             {
                 slots[i].GetComponent<Outline>().effectDistance = new Vector2(5f, 5f);
