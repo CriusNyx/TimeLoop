@@ -17,7 +17,7 @@ public class TimeLoopSceneManager : MonoBehaviour
     }
     public void TriggerDeath()
     {
-        // TODO: add some on death effect
+        // Some on death effect
         Restart();
     }
 
