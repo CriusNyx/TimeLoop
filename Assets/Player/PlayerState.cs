@@ -8,7 +8,7 @@ public class PlayerState
     public Vector3 velocity = Vector3.zero;
     public bool groundedLastFrame = false;
     public bool hasGrappelJump = true;
-
+    public float lastY;
     public bool airDash = true;
     public float airDashCooldown = -1f;
     public bool canGrapple = true;
@@ -22,5 +22,7 @@ public class PlayerState
     {
         this.player = player;
         this.rigidbody = rigidbody;
+
+        
     }
 }
