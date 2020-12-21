@@ -55,8 +55,8 @@ public class Player : TimeBehaviour
 
     private void Update()
     {
-        gameObject.transform.Find("Char Base Unity 1/Gun").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasGrappleUnlocked;
-        gameObject.transform.Find("Char Base Unity 1/Booster").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasSuperJump;
+        gameObject.transform.Find("Player Model/Char Base Unity 1/Gun").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasGrappleUnlocked;
+        gameObject.transform.Find("Player Model/Char Base Unity 1/Booster").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasSuperJump;
 
         float mouseX = Input.GetAxisRaw("Mouse X");
         float mouseY = Input.GetAxisRaw("Mouse Y");
@@ -101,7 +101,7 @@ public class Player : TimeBehaviour
             flatVelocity = Vector3.Normalize(flatVelocity);
             float theta = -Mathf.Atan2(flatVelocity.z, flatVelocity.x) * Mathf.Rad2Deg + 90f;
             Quaternion rot = Quaternion.Euler(0f, theta, 0f);
-            gameObject.transform.Find("Char Base Unity 1").transform.rotation = rot;
+            gameObject.transform.Find("Player Model").transform.rotation = rot;
         }
 
         state.buffer = new InputBuffer(state.buffer);
