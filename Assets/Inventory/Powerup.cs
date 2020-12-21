@@ -57,6 +57,7 @@ public class Powerup : Pickup
                     break;
                 case PowerupType.Card:
                     playerInventory.AddItem(new KeyItem(0, Color.red));
+                    GameObject.Find("FinalPath").GetComponent<DoorManager>().UnlockNextDoor();
                     break;
             }
             Destroy(gameObject);
