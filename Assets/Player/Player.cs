@@ -89,7 +89,7 @@ public class Player : TimeBehaviour
             flatVelocity.y = 0f;
             flatVelocity = Vector3.Normalize(flatVelocity);
             float theta = -Mathf.Atan2(flatVelocity.z, flatVelocity.x) * Mathf.Rad2Deg + 90f;
-            Quaternion rot = Quaternion.Euler(-90f, theta, 0f);
+            Quaternion rot = Quaternion.Euler(0f, theta, 0f);
             gameObject.transform.Find("Player Model").transform.rotation = rot;
         }
 
