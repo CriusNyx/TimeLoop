@@ -17,7 +17,10 @@ public class WalkingBehaviour : PlayerBehaviour
 
             if (Physics.Raycast(position, forward, out RaycastHit grappelHit, Player.grappleHookDistance, LayerMask.GetMask("Default")))
             {
-                state.player.behaviour = new GrappleHookBehaviour(grappelHit.point);
+                if (grappelHit.collider.tag == "Grappleable")
+                {
+                    state.player.behaviour = new GrappleHookBehaviour(grappelHit.point);
+                }
             }
         }
 

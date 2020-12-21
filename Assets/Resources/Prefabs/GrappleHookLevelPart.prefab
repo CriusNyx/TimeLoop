@@ -7397,6 +7397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265979529626637 stripped
@@ -7458,6 +7462,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
       propertyPath: m_Name
       value: Platform (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
@@ -7521,6 +7529,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265979250782464 stripped
@@ -7582,6 +7594,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
       propertyPath: m_Name
       value: Platform (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
@@ -7645,6 +7661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265979070784489 stripped
@@ -7706,6 +7726,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
       propertyPath: m_Name
       value: Platform (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
@@ -7769,6 +7793,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265978928438667 stripped
@@ -7830,6 +7858,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
       propertyPath: m_Name
       value: Platform (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
@@ -7893,6 +7925,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265978901545982 stripped
@@ -7954,6 +7990,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
       propertyPath: m_Name
       value: Platform (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
@@ -8017,6 +8057,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265978490142574 stripped
@@ -8078,6 +8122,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
       propertyPath: m_Name
       value: Platform (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
@@ -8141,6 +8189,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265978234564467 stripped
@@ -8202,6 +8254,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
       propertyPath: m_Name
       value: Platform (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
@@ -8265,6 +8321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265977953048541 stripped
@@ -8326,6 +8386,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
       propertyPath: m_Name
       value: Platform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
@@ -8389,6 +8453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265977639005318 stripped
@@ -8451,6 +8519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
 --- !u!4 &2188265977432656338 stripped
@@ -8512,6 +8584,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
       propertyPath: m_Name
       value: Platform (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
+      propertyPath: m_TagString
+      value: Grappleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eda5d8eb1412834aa261484655d3d3e, type: 3}
