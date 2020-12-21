@@ -11,8 +11,14 @@ public class MoveTo : MonoBehaviour
 
     void Start()
     {
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(Delay(agent));
+        if (nextDestination != null)
+        {
+            NavMeshAgent agent = GetComponent<NavMeshAgent>();
+            StartCoroutine(Delay(agent));
+        } else
+        {
+            Destroy(GetComponent<NavMeshAgent>());
+        }
     }
     IEnumerator Patrol(NavMeshAgent agent)
     {

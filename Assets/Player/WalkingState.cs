@@ -125,7 +125,7 @@ public class WalkingBehaviour : PlayerBehaviour
             }
             if (playerInput.magnitude == 0)
             {
-                if (state.groundedLastFrame)
+                if (state.groundedLastFrame && PlayerPowerupState.hasSuperJump)
                     state.player.behaviour = new JumpCharge();
             }
             else

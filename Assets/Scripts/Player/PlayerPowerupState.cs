@@ -10,5 +10,6 @@ public static class PlayerPowerupState
     public static void ResetAllPowerups()
     {
         hasGrappleUnlocked = false;
+        hasSuperJump = false;
     }
 }
