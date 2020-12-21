@@ -76,15 +76,14 @@ public class Powerup : Pickup
             {
                 case PowerupType.Grapple:
                     PlayerPowerupState.hasGrappleUnlocked = true;
-                    CreatePickupHintText("Use the <color=red>grapple</color> on floating rocks!");
+                    CreatePickupHintText("Use the grapple on <color=red>floating rocks</color>!");
                     break;
                 case PowerupType.Jet:
                     PlayerPowerupState.hasSuperJump = true;
-                    CreatePickupHintText("Hold <color=red>shift</color> while standing still to charge your <color=red>jet</color>!");
+                    CreatePickupHintText("Hold shift while standing still to charge your jet!");
                     break;
                 case PowerupType.Card:
                     playerInventory.AddItem(new KeyItem(0, Color.red));
-                    GameObject.Find("FinalPath").GetComponent<DoorManager>().UnlockNextDoor();
                     break;
             }
         

@@ -43,51 +43,37 @@ public class Powerup : Pickup
         transform.position = start + new Vector3(0, Mathf.Sin(rotAng)*.25f, 0);
     }
 
-    private void CreatePickupHintText(string text)
-    {
-        GameObject textObject = new GameObject("text");
-        textObject.AddComponent<TextMesh>();
-
-        TextMesh textMeshComponent = textObject.GetComponent(typeof(TextMesh)) as TextMesh;
-
-        MeshRenderer meshRendererComponent = textObject.GetComponent(typeof(MeshRenderer)) as MeshRenderer;
-
-        textMeshComponent.text = text;
-        textMeshComponent.fontSize = 50;
-        textMeshComponent.anchor = TextAnchor.MiddleCenter;
-        textMeshComponent.alignment = TextAlignment.Center;
-
-
-        textObject.transform.position = transform.position;
-        Quaternion q = Camera.main.transform.rotation;
-        q.eulerAngles = new Vector3(0, q.eulerAngles.y, q.eulerAngles.z);
-        textObject.transform.rotation = q;
-
-        textObject.transform.localScale = Vector3.one * 0.1f;
-
-        GameObject.Destroy(textObject, 20f);
-    }
-
     protected override void OnPickup(Collider other)
     {
         if(other.tag == "Player")
         {
+        var pickupText = "Picked up item";
             switch (powerupType)
             {
                 case PowerupType.Grapple:
                     PlayerPowerupState.hasGrappleUnlocked = true;
-                    CreatePickupHintText("Use the <color=red>grapple</color> on floating rocks!");
                     break;
                 case PowerupType.Jet:
                     PlayerPowerupState.hasSuperJump = true;
-                    CreatePickupHintText("Hold <color=red>shift</color> while standing still to charge your <color=red>jet</color>!");
                     break;
                 case PowerupType.Card:
                     playerInventory.AddItem(new KeyItem(0, Color.red));
-                    GameObject.Find("FinalPath").GetComponent<DoorManager>().UnlockNextDoor();
                     break;
             }
-        
+
+        if (pickupText != null)
+        {
+            GameObject textObject = new GameObject("text");
+            textObject.AddComponent("TextMesh");
+            textObject.AddComponent("MeshRenderer");
+
+            TextMesh textMeshComponent = textObject.GetComponent(typeof(TextMesh)) as TextMesh;
+            textMeshComponent.font = font;
+
+            MeshRenderer meshRendererComponent = textObject.GetComponent(typeof(MeshRenderer)) as MeshRenderer;
+
+            textMeshComponent.text = "Testing";
+        }
             Destroy(gameObject);
         }
     }
