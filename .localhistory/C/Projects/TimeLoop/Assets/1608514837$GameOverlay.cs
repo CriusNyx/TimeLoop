@@ -30,11 +30,10 @@ public class GameOverlay : TimeBehaviour
         }
 
     }
-    
+
     public void ResetGame()
     {
-        SetPause(false);
-        GameObject.Find("TimeLoopSceneManager").GetComponent<TimeLoopSceneManager>().Restart();
+
     }
 
     public void SetCountdownText(string text)

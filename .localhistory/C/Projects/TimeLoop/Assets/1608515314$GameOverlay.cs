@@ -41,7 +41,11 @@ public class GameOverlay : TimeBehaviour
     {
         transform.Find("StatusPanel/CountdownText").GetComponent<Text>().text = text;
     }
+<<<<<<< Updated upstream
 
+=======
+    
+>>>>>>> Stashed changes
     void SetPause(bool status)
     {
         isPaused = status;
