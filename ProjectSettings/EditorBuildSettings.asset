@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TimeLoop.unity
     guid: cfd87f90a685b9f478b37dfbc6efa60b
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/SpeedLinesParticle.unity
+    guid: 5c6ab3c5b6a4a15479b323c2702f9db8
+  - enabled: 1
+    path: Assets/Scenes/TimeLoop 1.unity
+    guid: 16e9fa3f359ba0c49a1597aff38d2ae2
+  - enabled: 1
+    path: Assets/Scenes/TimeLoop2.unity
+    guid: 25b43b3b4c701f047bd6a3dc54027255
+  - enabled: 1
+    path: Assets/Scenes/TimeLoop3.unity
+    guid: a2afc4bc2a5de514f89f6901f53232d8
   m_configObjects: {}
