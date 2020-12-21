@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2731051330982535666}
   - component: {fileID: 2731051330982535676}
   - component: {fileID: 5233196213063012338}
+  - component: {fileID: -5356266335064128495}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -69,6 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2b0f1f1a4a5584f80bceba6b5a210a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextDestination: {fileID: 0}
+  startDelay: 0
 --- !u!114 &5233196213063012338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,9 +84,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6dd066e9c363ed4eaba8982de01a74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 0}
+  Projectile: {fileID: 3310078730019386960, guid: ff2bc20e0f735e1488814f0061a6b02d, type: 3}
   bulletSpawnHeight: 1.28
   spawnDistance: 1.1
+--- !u!136 &-5356266335064128495
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2731051330982535679}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2731051331541774706
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 2731051331541774706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0.5}
-  m_LocalScale: {x: 0.5, y: 0.2, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2731051330982535667}
   m_RootOrder: 1
@@ -206,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2731051331545061840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2731051330982535667}
