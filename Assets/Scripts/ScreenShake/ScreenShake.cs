@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScreenShake : MonoBehaviour
+public class ScreenShake : TimeBehaviour
 {
     public enum ShakeAmount
     {
@@ -10,6 +10,10 @@ public class ScreenShake : MonoBehaviour
         medium,
         large
     }
+
+    private float thetaAt1 = 30f;
+
+    private float myShake = 0f;
 
     public static float ShakeAmountToFloat(ShakeAmount amount)
     {
@@ -22,8 +26,18 @@ public class ScreenShake : MonoBehaviour
         };
     }
 
-    public static void Shake(float ammount)
+    public static void Shake(ShakeAmount amount)
     {
+        float f = ShakeAmountToFloat(amount);
+
+        ScreenShake shake = FindObjectOfType<ScreenShake>();
+
+        shake.myShake = Mathf.Max(shake.myShake, f);
+    }
+
+    protected override void ProtectedFixedUpdate()
+    {
+        myShake -= Time.fixedDeltaTime;
 
     }
 }
