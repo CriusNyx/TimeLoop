@@ -9,7 +9,9 @@ public class TitleScrene : MonoBehaviour
 
     public void Start()
     {
-        winView.SetActive(PlayerPowerupState.isWin);  
+        winView.SetActive(PlayerPowerupState.isWin);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void StartGame()
