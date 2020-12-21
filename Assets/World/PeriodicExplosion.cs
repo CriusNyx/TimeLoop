@@ -57,6 +57,6 @@ public class PeriodicExplosion : TimeBehaviour
 
     protected override void ProtectedFixedUpdate()
     {
-        throw new System.NotImplementedException();
+
     }
 }
