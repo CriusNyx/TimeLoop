@@ -55,8 +55,8 @@ public class Player : TimeBehaviour
 
     private void Update()
     {
-        gameObject.transform.Find("Char Base Unity 1/Gun").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasGrappleUnlocked;
-        gameObject.transform.Find("Char Base Unity 1/Booster").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasSuperJump;
+        gameObject.transform.Find("Player Model/Char Base Unity 1/Gun").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasGrappleUnlocked;
+        gameObject.transform.Find("Player Model/Char Base Unity 1/Booster").GetComponent<SkinnedMeshRenderer>().enabled = PlayerPowerupState.hasSuperJump;
 
         float mouseX = Input.GetAxisRaw("Mouse X");
         float mouseY = Input.GetAxisRaw("Mouse Y");
