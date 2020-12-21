@@ -7,7 +7,8 @@ public class GroundEnemy : MonoBehaviour
     public GameObject Projectile;
     public float bulletSpawnHeight = 1.5f;
     public float spawnDistance = 1.25f;
-    private int counter = 0;
+    public int shotsPerSeconds = 2;
+    private float counter = 0;
     public bool fixedRotation = false;
     public float rotationIfFixed = 90f;
     Transform t;
@@ -20,10 +21,10 @@ public class GroundEnemy : MonoBehaviour
     void Update()
     {
         counter++;
-        if (counter == 30)
+        if (counter >= (60f / shotsPerSeconds))
         {
             FireBullets();
-            counter = 0;
+            counter -= (60f / shotsPerSeconds);
         }
         if(fixedRotation == true)
         {

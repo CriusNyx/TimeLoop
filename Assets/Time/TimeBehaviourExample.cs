@@ -12,7 +12,7 @@ public class TimeBehaviourExample : TimeBehaviour
 
     private IEnumerator RoutineToDo()
     {
-        Debug.Log("I'm doing the thing.");
+        //Debug.Log("I'm doing the thing.");
         // This behaviour will execute after a certain time once registered.
 
         yield return null;
