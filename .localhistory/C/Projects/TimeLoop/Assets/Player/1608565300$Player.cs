@@ -99,10 +99,6 @@ public class Player : TimeBehaviour
         {
             state.buffer.grappelHook = true;
         }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            GetComponent<Inventory>().UseSelectedItem();
-        }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             state.buffer.airDashPressed = true;

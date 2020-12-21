@@ -56,7 +56,7 @@ public class Powerup : Pickup
                     PlayerPowerupState.hasSuperJump = true;
                     break;
                 case PowerupType.Card:
-                    playerInventory.AddItem(new KeyItem(0, Color.red));
+                    playerInventory.AddItem(new KeyItem(123, Color.blue));
                     break;
             }
             Destroy(gameObject);
