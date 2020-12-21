@@ -21,6 +21,7 @@ public class WalkingBehaviour : PlayerBehaviour
             {
                 if (grappelHit.collider.tag == "Grappleable")
                 {
+                    //play sound here
                     Animator anim = state.player.GetComponent<Animator>();
                     state.player.behaviour = new GrappleHookBehaviour(grappelHit.point);
                     anim.SetBool("isGrappling", true);
@@ -45,6 +46,13 @@ public class WalkingBehaviour : PlayerBehaviour
         SnapToGround(state, hit);
         UpdateVelocty(state, Player.groundAcceleration, true, false, true);
 
+        if (!state.groundedLastFrame)
+        {
+                if(state.has)
+            {
+                //play sound here
+            }
+        }
         if (state.buffer.superJumpPressed && !state.buffer.superJumpReleased)
         {
             state.player.setJetBurn(true);

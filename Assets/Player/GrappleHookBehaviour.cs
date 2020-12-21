@@ -19,6 +19,7 @@ public class GrappleHookBehaviour : PlayerBehaviour
     {
         if(grappleHookLine == null)
         {
+            //Play Woosh Sound Here
             grappleHookLine = Object.Instantiate(Resources.Load<GameObject>("Prefabs/GrappleLineRenderer"));
         }
         LineRenderer grappleLineRenderer = grappleHookLine.GetComponent<LineRenderer>();
