@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 621183957}
-  m_IndirectSpecularColor: {r: 2.887653, g: 2.9600945, b: 3.0397243, a: 1}
+  m_IndirectSpecularColor: {r: 2.567424, g: 2.6395993, b: 2.7191155, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3148,10 +3148,6 @@ PrefabInstance:
     - target: {fileID: 5799206248305669126, guid: 6f0949187892dd644873c4ab07e01d6c, type: 3}
       propertyPath: rotationIfFixed
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6478560977785391571, guid: 6f0949187892dd644873c4ab07e01d6c, type: 3}
-      propertyPath: m_TagString
-      value: Grappleable
       objectReference: {fileID: 0}
     - target: {fileID: 8474736474149006007, guid: 6f0949187892dd644873c4ab07e01d6c, type: 3}
       propertyPath: next
