@@ -180,11 +180,11 @@ MonoBehaviour:
     min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 0.48928928
+    m_Value: 0.2930608
     min: 0
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0.5, y: 0.42638448, z: 0.32229766}
+    m_Value: {x: 0.5, y: 0.49986714, z: 0.49914524}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
@@ -200,7 +200,7 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: 12c15a8e5a294be45819b1dd4b9b08d3, type: 3}
+    m_Value: {fileID: 8900000, guid: 3675d0c3c874f6b479bab57eb7e68c90, type: 3}
   enableDistortion:
     m_OverrideState: 1
     m_Value: 1
@@ -380,10 +380,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   limitMin:
-    m_OverrideState: 0
-    m_Value: -10
+    m_OverrideState: 1
+    m_Value: 0
   limitMax:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 10
   curveMap:
     m_OverrideState: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   toeStrength:
     m_OverrideState: 0
     m_Value: 0
